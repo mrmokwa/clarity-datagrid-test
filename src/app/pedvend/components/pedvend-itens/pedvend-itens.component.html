@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th class="left">Seq</th>
+            <th class="left">Código</th>
+            <th class="left">Descrição</th>
+            <th>Quantidade</th>
+            <th>Valor</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of itens">
+            <td class="left">{{ item.sequencia }}</td>
+            <td class="left">{{ item.codigo }}</td>
+            <td class="left">{{ item.descricao }}</td>
+            <td>{{ item.quantidade | number : '1.2-2'}}</td>
+            <td>{{ item.valor | currency}}</td>
+            <td>{{ item.valor * item.quantidade | currency}}</td>
+        </tr>
+    </tbody>
+</table>

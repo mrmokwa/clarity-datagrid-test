@@ -1,0 +1,5 @@
+<ng-container *ngIf="pedvend$ | async as pedvend">
+    <app-pedvend-detalhes [pedvend]="pedvend"></app-pedvend-detalhes>
+    <app-pedvend-itens [itens]="pedvend.itens"></app-pedvend-itens>
+    <br />
+</ng-container>

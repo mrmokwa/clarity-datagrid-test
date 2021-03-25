@@ -1,0 +1,28 @@
+<table class="table table-vertical">
+    <tbody>
+        <tr>
+            <th>Análise Financeira</th>
+            <td>{{ pedvend.financeiro | financeiro }}</td>
+        </tr>
+        <tr>
+            <th>Análise Comercial</th>
+            <td>{{ pedvend.comercial | comercial }}</td>
+        </tr>
+        <tr>
+            <th>Tipo Frete</th>
+            <td>{{ pedvend.tipoFrete }}</td>
+        </tr>
+        <tr>
+            <th>Transportadora</th>
+            <td>{{ pedvend.transp }}</td>
+        </tr>
+        <tr>
+            <th>Condição Pagamento</th>
+            <td>{{ pedvend.condPgto }}</td>
+        </tr>
+        <tr>
+            <th>Observações</th>
+            <td>{{ pedvend.observacoes }}</td>
+        </tr>
+    </tbody>
+</table>
