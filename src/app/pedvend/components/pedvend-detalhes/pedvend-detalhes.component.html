@@ -1,6 +1,39 @@
 <table class="table table-vertical">
     <tbody>
         <tr>
+            <th>Divisão</th>
+            <td>{{ pedvend.divisaoId }}</td>
+        </tr>
+        <tr>
+            <th>Pedido</th>
+            <td>{{ pedvend.numero }}</td>
+        </tr>
+        <tr>
+            <th>Cliente</th>
+            <td>{{ pedvend.cliente }}</td>
+        </tr>
+        <tr>
+            <th>Entrada</th>
+            <td>{{ pedvend.entrada | date : 'shortDate' }}</td>
+        </tr>
+        <tr>
+            <th>Entrega</th>
+            <td>{{ pedvend.entrega | date : 'shortDate' }}</td>
+        </tr>
+        <tr>
+            <th>Representante</th>
+            <td>{{ pedvend.repres }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table table-vertical">
+    <tbody>
+        <tr>
+            <th>Situação</th>
+            <td>{{ pedvend.situacao | situacao }}</td>
+        </tr>
+        <tr>
             <th>Análise Financeira</th>
             <td>{{ pedvend.financeiro | financeiro }}</td>
         </tr>
@@ -8,8 +41,13 @@
             <th>Análise Comercial</th>
             <td>{{ pedvend.comercial | comercial }}</td>
         </tr>
+    </tbody>
+</table>
+
+<table class="table table-vertical">
+    <tbody>
         <tr>
-            <th>Tipo Frete</th>
+            <th>Tipo de Frete</th>
             <td>{{ pedvend.tipoFrete }}</td>
         </tr>
         <tr>
@@ -17,7 +55,7 @@
             <td>{{ pedvend.transp }}</td>
         </tr>
         <tr>
-            <th>Condição Pagamento</th>
+            <th>Condição de Pagamento</th>
             <td>{{ pedvend.condPgto }}</td>
         </tr>
         <tr>

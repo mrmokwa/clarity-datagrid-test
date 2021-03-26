@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PedVend } from '../../pedvend.model';
-import { PedVendService } from '../../pedvend.service';
+import { PedVendService } from '../../services';
 
 @Component({
   selector: 'app-pedvend-datagrid-detail',

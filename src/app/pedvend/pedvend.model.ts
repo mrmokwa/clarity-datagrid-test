@@ -1,9 +1,10 @@
 export interface PedVendResumido {
   id: number;
+  divisaoId: string;
   divisao: string;
   numero: number;
   entrada: Date;
-  clientId: number;
+  clienteId: number;
   cliente: string;
   represId: number;
   repres: string;

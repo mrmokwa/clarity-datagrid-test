@@ -7,6 +7,7 @@ import {
   PedvendDetalhesComponent,
   PedvendItensComponent,
   PedvendDatagridDetailComponent,
+  PedvendDatagridFilterSituacaoComponent,
 } from './components';
 import {
   PedvendFinanceiroPipe,
@@ -24,6 +25,7 @@ import {
     PedvendFinanceiroPipe,
     PedvendComercialPipe,
     PedvendSituacaoPipe,
+    PedvendDatagridFilterSituacaoComponent,
   ],
   imports: [SharedModule],
   exports: [PedvendMainComponent],

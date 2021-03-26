@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClrDatagridStateInterface } from '@clr/angular';
 import { PedVend, PedVendResumido } from '../../pedvend.model';
-import { PedVendService } from '../../pedvend.service';
+import { PedVendService } from '../../services';
 
 @Component({
   selector: 'app-pedvend-datagrid',
@@ -11,7 +11,6 @@ import { PedVendService } from '../../pedvend.service';
 export class PedvendDatagridComponent implements OnInit {
   total: number;
   loading = true;
-  selected: number[] = [];
   pedidos: PedVendResumido[];
 
   constructor(private pedVendService: PedVendService) {}
@@ -19,6 +18,8 @@ export class PedvendDatagridComponent implements OnInit {
   ngOnInit(): void {}
 
   refresh(state: ClrDatagridStateInterface<PedVend>): void {
+    console.log('refresh', state);
+
     this.loading = true;
 
     this.pedVendService
