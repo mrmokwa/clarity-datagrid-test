@@ -18,7 +18,7 @@ export class PedvendDatagridComponent implements OnInit {
   ngOnInit(): void {}
 
   refresh(state: ClrDatagridStateInterface<PedVend>): void {
-    console.log('refresh', state);
+    console.log('refresh', state.filters[0]);
 
     this.loading = true;
 

@@ -14,6 +14,7 @@ import {
   PedvendComercialPipe,
   PedvendSituacaoPipe,
 } from './pipes';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import {
     PedvendSituacaoPipe,
     PedvendDatagridFilterSituacaoComponent,
   ],
-  imports: [SharedModule],
+  imports: [SharedModule, FormsModule],
   exports: [PedvendMainComponent],
 })
 export class PedvendModule {}

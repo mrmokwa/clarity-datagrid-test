@@ -1,6 +1,10 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ClrDatagridFilter, ClrDatagridFilterInterface } from '@clr/angular';
-import { PedVendResumido } from '../../pedvend.model';
+
+interface SituacaoFilter {
+  property: string;
+  value: string;
+}
 
 @Component({
   selector: 'app-pedvend-datagrid-filter-situacao',
@@ -8,29 +12,20 @@ import { PedVendResumido } from '../../pedvend.model';
   styleUrls: ['./pedvend-datagrid-filter-situacao.component.css'],
 })
 export class PedvendDatagridFilterSituacaoComponent
-  implements ClrDatagridFilterInterface<PedVendResumido> {
-  changes: any = new EventEmitter<any>(false);
-  state?: any;
+  implements ClrDatagridFilterInterface<SituacaoFilter> {
+  changes = new EventEmitter<boolean>(false);
+
+  selected = '';
+
+  get state(): SituacaoFilter {
+    return { property: 'situacao', value: this.selected };
+  }
 
   constructor(filterContainer: ClrDatagridFilter) {
     filterContainer.setFilter(this);
   }
 
-  isActive(): boolean {
-    return true;
-  }
+  isActive = () => true;
 
-  accepts(item: PedVendResumido): boolean {
-    console.log('accepts', item);
-    return false;
-  }
-
-  equals?(other: ClrDatagridFilterInterface<PedVendResumido, any>): boolean {
-    console.log('equals', other);
-    return false;
-  }
-
-  teste(): void {
-    this.changes.next(true);
-  }
+  accepts = (item: SituacaoFilter) => item.value !== this.selected;
 }
