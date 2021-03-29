@@ -8,6 +8,7 @@ import {
   PedvendItensComponent,
   PedvendDatagridDetailComponent,
   PedvendDatagridFilterSituacaoComponent,
+  PedvendDatagridFilterEntradaComponent,
 } from './components';
 import {
   PedvendFinanceiroPipe,
@@ -27,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     PedvendComercialPipe,
     PedvendSituacaoPipe,
     PedvendDatagridFilterSituacaoComponent,
+    PedvendDatagridFilterEntradaComponent,
   ],
   imports: [SharedModule, FormsModule],
   exports: [PedvendMainComponent],

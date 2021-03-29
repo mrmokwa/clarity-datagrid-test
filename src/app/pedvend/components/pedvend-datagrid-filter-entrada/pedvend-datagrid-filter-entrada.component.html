@@ -1,0 +1,28 @@
+<clr-radio-container (change)="changes.next(true)">
+    <label>Data Entrada</label>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="0" [(ngModel)]="dias" />
+        <label>Hoje</label>
+    </clr-radio-wrapper>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="7" [(ngModel)]="dias" />
+        <label>Últimos 7 dias</label>
+    </clr-radio-wrapper>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="30" [(ngModel)]="dias" />
+        <label>Últimos 30 dias</label>
+    </clr-radio-wrapper>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="90" [(ngModel)]="dias" />
+        <label>Últimos 90 dias</label>
+    </clr-radio-wrapper>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="180" [(ngModel)]="dias" />
+        <label>Últimos 180 dias</label>
+    </clr-radio-wrapper>
+</clr-radio-container>

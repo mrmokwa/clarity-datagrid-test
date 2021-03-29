@@ -2,7 +2,12 @@
 
     <clr-dg-column>Id</clr-dg-column>
     <clr-dg-column>Pedido</clr-dg-column>
-    <clr-dg-column [clrDgField]="'entrada'">Entrada</clr-dg-column>
+    <clr-dg-column [clrDgField]="'dias'" [clrFilterValue]="'180'">
+        Entrada
+        <clr-dg-filter [clrDgFilter]="entradaFilter">
+            <app-pedvend-datagrid-filter-entrada #entradaFilter></app-pedvend-datagrid-filter-entrada>
+        </clr-dg-filter>
+    </clr-dg-column>
     <clr-dg-column>Cliente</clr-dg-column>
     <clr-dg-column>Representante</clr-dg-column>
     <clr-dg-column>

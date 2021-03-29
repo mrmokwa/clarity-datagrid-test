@@ -10,6 +10,7 @@ type PedVendPaged = Retorno<PedVendResumido>;
 
 export interface PedVendFiltros {
   cliente: number;
+  dias: number;
   situacao: PedVendSituacao | 'TODOS';
 }
 
@@ -25,7 +26,7 @@ export class PedVendService {
     pageSize: number
   ): Observable<PedVendPaged> {
     return this.httpClient.get<PedVendPaged>(
-      `${TDS_URL}/pedidos-venda?cliente=${filtros.cliente}&situacao=${filtros.situacao}&pageNumber=${pageNumber}&pageSize=${pageSize}`
+      `${TDS_URL}/pedidos-venda?cliente=${filtros.cliente}&dias=${filtros.dias}&situacao=${filtros.situacao}&pageNumber=${pageNumber}&pageSize=${pageSize}`
     );
   }
 

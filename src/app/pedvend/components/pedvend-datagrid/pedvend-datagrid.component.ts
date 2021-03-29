@@ -14,6 +14,7 @@ export class PedvendDatagridComponent {
   loading = true;
   pedidos: PedVendResumido[];
 
+  winsFilter: any;
   constructor(private pedVendService: PedVendService) {}
 
   refresh(state: ClrDatagridStateInterface<PedVend>): void {
@@ -37,6 +38,7 @@ export class PedvendDatagridComponent {
 
   montarFiltro(filters: DatagridFilter[]): PedVendFiltros {
     let situacao: SituacaoOpcoes = 'TODOS';
+    let dias: number;
 
     filters?.forEach((filtro) => {
       switch (filtro.property) {
@@ -44,11 +46,14 @@ export class PedvendDatagridComponent {
           situacao = filtro.value;
           break;
 
+        case 'dias':
+          dias = filtro.value;
+
         default:
           break;
       }
     });
 
-    return { cliente: 0, situacao };
+    return { cliente: 0, situacao, dias };
   }
 }
