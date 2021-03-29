@@ -10,7 +10,7 @@ declare type PedVendPag = Retorno<PedVendResumido>;
 
 interface Filtros {
   cliente: number;
-  situacao: PedVendSituacao | '';
+  situacao: PedVendSituacao | 'TODOS';
 }
 
 @Injectable({
