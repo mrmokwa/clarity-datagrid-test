@@ -1,12 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PedVend, PedVendResumido } from '../pedvend.model';
+import { PedVend, PedVendResumido, PedVendSituacao } from '../pedvend.model';
 
 const TDS_URL =
   'http://localhost:8080/painel-de-vendas/rest/painel-de-vendas-service';
 
 declare type PedVendPag = Retorno<PedVendResumido>;
+
+interface Filtros {
+  cliente: number;
+  situacao: PedVendSituacao | '';
+}
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +19,13 @@ declare type PedVendPag = Retorno<PedVendResumido>;
 export class PedVendService {
   constructor(private httpClient: HttpClient) {}
 
-  getAll(cliente = 0, pageNumber = 1, pageSize = 10): Observable<PedVendPag> {
+  getAll(
+    filtros: Filtros,
+    pageNumber: number,
+    pageSize: number
+  ): Observable<PedVendPag> {
     return this.httpClient.get<PedVendPag>(
-      `${TDS_URL}/pedidos-venda?cliente=${cliente}&pageNumber=${pageNumber}&pageSize=${pageSize}`
+      `${TDS_URL}/pedidos-venda?cliente=${filtros.cliente}&situacao=${filtros.situacao}&pageNumber=${pageNumber}&pageSize=${pageSize}`
     );
   }
 

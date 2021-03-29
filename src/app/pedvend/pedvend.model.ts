@@ -8,7 +8,7 @@ export interface PedVendResumido {
   cliente: string;
   represId: number;
   repres: string;
-  situacao: string;
+  situacao: PedVendSituacao;
 }
 
 export interface PedVend extends PedVendResumido {
@@ -30,3 +30,5 @@ export interface PedVendItem {
   quantidade: number;
   valor: number;
 }
+
+export type PedVendSituacao = 'A' | 'C' | 'P' | 'T';

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClrDatagridStateInterface } from '@clr/angular';
+import { SituacaoFilter } from '..';
 import { PedVend, PedVendResumido } from '../../pedvend.model';
 import { PedVendService } from '../../services';
 
@@ -18,16 +19,19 @@ export class PedvendDatagridComponent implements OnInit {
   ngOnInit(): void {}
 
   refresh(state: ClrDatagridStateInterface<PedVend>): void {
-    console.log('refresh', state.filters[0]);
+    const situacao: SituacaoFilter = state.filters[0];
 
     this.loading = true;
 
     this.pedVendService
-      .getAll(0, state.page.current, state.page.size)
-      .subscribe((retorno) => {
-        this.pedidos = retorno.data;
-        this.total = retorno.pagination.numRecords;
-        this.loading = false;
-      });
+      .getAll({ cliente: 0, situacao }, state.page.current, state.page.size)
+      .subscribe(
+        (retorno) => {
+          this.pedidos = retorno.data;
+          this.total = retorno.pagination.numRecords;
+          this.loading = false;
+        },
+        () => (this.loading = false)
+      );
   }
 }
