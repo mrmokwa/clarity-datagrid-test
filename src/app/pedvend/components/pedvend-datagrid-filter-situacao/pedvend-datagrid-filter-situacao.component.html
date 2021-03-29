@@ -1,7 +1,28 @@
-<select clrSelect name="options" [(ngModel)]="selected" (change)="changes.next(true)">
-    <option value="A">Atendido</option>
-    <option value="C">Cancelado</option>
-    <option value="P">Pendente</option>
-    <option value="T">Transferido</option>
-    <option value="TODOS">Todos</option>
-</select>
+<clr-radio-container (change)="changes.next(true)">
+    <label>Situação</label>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="A" [(ngModel)]="selected" />
+        <label>Atendido</label>
+    </clr-radio-wrapper>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="C" [(ngModel)]="selected" />
+        <label>Cancelado</label>
+    </clr-radio-wrapper>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="P" [(ngModel)]="selected" />
+        <label>Pendente</label>
+    </clr-radio-wrapper>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="T" [(ngModel)]="selected" />
+        <label>Transferido</label>
+    </clr-radio-wrapper>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="TODOS" [(ngModel)]="selected" />
+        <label>Todos</label>
+    </clr-radio-wrapper>
+</clr-radio-container>

@@ -1,30 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ClrDatagridStateInterface } from '@clr/angular';
-import { SituacaoFilter } from '..';
+import { SituacaoOpcoes } from '..';
 import { PedVend, PedVendResumido } from '../../pedvend.model';
-import { PedVendService } from '../../services';
+import { PedVendFiltros, PedVendService } from '../../services';
 
 @Component({
   selector: 'app-pedvend-datagrid',
   templateUrl: './pedvend-datagrid.component.html',
   styleUrls: ['./pedvend-datagrid.component.css'],
 })
-export class PedvendDatagridComponent implements OnInit {
+export class PedvendDatagridComponent {
   total: number;
   loading = true;
   pedidos: PedVendResumido[];
 
   constructor(private pedVendService: PedVendService) {}
 
-  ngOnInit(): void {}
-
   refresh(state: ClrDatagridStateInterface<PedVend>): void {
-    const situacao: SituacaoFilter = state.filters[0];
-
     this.loading = true;
 
     this.pedVendService
-      .getAll({ cliente: 0, situacao }, state.page.current, state.page.size)
+      .getAll(
+        this.montarFiltro(state.filters),
+        state.page.current,
+        state.page.size
+      )
       .subscribe(
         (retorno) => {
           this.pedidos = retorno.data;
@@ -33,5 +33,22 @@ export class PedvendDatagridComponent implements OnInit {
         },
         () => (this.loading = false)
       );
+  }
+
+  montarFiltro(filters: DatagridFilter[]): PedVendFiltros {
+    let situacao: SituacaoOpcoes = 'TODOS';
+
+    filters?.forEach((filtro) => {
+      switch (filtro.property) {
+        case 'situacao':
+          situacao = filtro.value;
+          break;
+
+        default:
+          break;
+      }
+    });
+
+    return { cliente: 0, situacao };
   }
 }

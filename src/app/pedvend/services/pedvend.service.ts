@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PedVend, PedVendResumido, PedVendSituacao } from '../pedvend.model';
 
-const TDS_URL =
+export const TDS_URL =
   'http://localhost:8080/painel-de-vendas/rest/painel-de-vendas-service';
 
-declare type PedVendPag = Retorno<PedVendResumido>;
+type PedVendPaged = Retorno<PedVendResumido>;
 
-interface Filtros {
+export interface PedVendFiltros {
   cliente: number;
   situacao: PedVendSituacao | 'TODOS';
 }
@@ -20,11 +20,11 @@ export class PedVendService {
   constructor(private httpClient: HttpClient) {}
 
   getAll(
-    filtros: Filtros,
+    filtros: PedVendFiltros,
     pageNumber: number,
     pageSize: number
-  ): Observable<PedVendPag> {
-    return this.httpClient.get<PedVendPag>(
+  ): Observable<PedVendPaged> {
+    return this.httpClient.get<PedVendPaged>(
       `${TDS_URL}/pedidos-venda?cliente=${filtros.cliente}&situacao=${filtros.situacao}&pageNumber=${pageNumber}&pageSize=${pageSize}`
     );
   }
@@ -32,15 +32,4 @@ export class PedVendService {
   get(id: number): Observable<PedVend> {
     return this.httpClient.get<PedVend>(`${TDS_URL}/pedidos-venda/${id}`);
   }
-}
-
-export interface Paginacao {
-  pageSize: number;
-  pageNumber: number;
-  numRecords: number;
-}
-
-export interface Retorno<T> {
-  pagination: Paginacao;
-  data: T[];
 }
