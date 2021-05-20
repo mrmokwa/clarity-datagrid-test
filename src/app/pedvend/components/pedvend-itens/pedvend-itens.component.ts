@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PedVendItem } from '../../pedvend.model';
+import { PedidoItem } from '../../pedvend.model';
 
 @Component({
   selector: 'app-pedvend-itens',
@@ -7,7 +7,7 @@ import { PedVendItem } from '../../pedvend.model';
   styleUrls: ['./pedvend-itens.component.css'],
 })
 export class PedvendItensComponent implements OnInit {
-  @Input() itens: PedVendItem[];
+  @Input() itens: PedidoItem[];
 
   constructor() {}
 

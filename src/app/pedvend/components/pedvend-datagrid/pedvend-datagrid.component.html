@@ -1,15 +1,20 @@
 <clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="loading">
 
-    <clr-dg-column>Id</clr-dg-column>
-    <clr-dg-column>Pedido</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">
+        Name
+    </clr-dg-column>
+
     <clr-dg-column [clrDgField]="'dias'" [clrFilterValue]="'180'">
         Entrada
         <clr-dg-filter [clrDgFilter]="entradaFilter">
             <app-pedvend-datagrid-filter-entrada #entradaFilter></app-pedvend-datagrid-filter-entrada>
         </clr-dg-filter>
     </clr-dg-column>
-    <clr-dg-column>Cliente</clr-dg-column>
-    <clr-dg-column>Representante</clr-dg-column>
+
+    <clr-dg-column [clrDgField]="'clienteNome'">
+        Cliente
+    </clr-dg-column>
+
     <clr-dg-column>
         Situação
         <clr-dg-filter [clrDgFilter]="situacaoFilter">
@@ -18,11 +23,9 @@
     </clr-dg-column>
 
     <clr-dg-row *ngFor="let pedido of pedidos" [clrDgItem]="pedido.id">
-        <clr-dg-cell>{{ pedido.id }}</clr-dg-cell>
-        <clr-dg-cell>{{ pedido.numero }}</clr-dg-cell>
+        <clr-dg-cell>{{ pedido.pedido }}</clr-dg-cell>
         <clr-dg-cell>{{ pedido.entrada | date : 'shortDate' }}</clr-dg-cell>
-        <clr-dg-cell>{{ pedido.cliente }}</clr-dg-cell>
-        <clr-dg-cell>{{ pedido.repres }}</clr-dg-cell>
+        <clr-dg-cell>{{ pedido.clienteNome }}</clr-dg-cell>
         <clr-dg-cell>{{ pedido.situacao | situacao }}</clr-dg-cell>
     </clr-dg-row>
 

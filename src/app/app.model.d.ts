@@ -1,12 +1,24 @@
 interface Paginacao {
-  pageSize: number;
+  offset: number;
+  orderBy: string;
+  orderDesc: string;
   pageNumber: number;
-  numRecords: number;
+  pageSize: number;
+  registros: number;
+  totalPages: number;
 }
 
-interface Retorno<T> {
-  pagination: Paginacao;
+interface PaginacaoFiltro {
+  pageSize?: number;
+  pageNumber?: number;
+  orderBy?: string;
+  orderDesc?: boolean;
+}
+
+interface Retorno<T, F> {
+  paginacao: Paginacao;
   data: T[];
+  filtros: F;
 }
 
 interface DatagridFilter {

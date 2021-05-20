@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PedVend } from '../../pedvend.model';
+import { PedidoDetalhado } from '../../pedvend.model';
 import { PedVendService } from '../../services';
 
 @Component({
@@ -11,7 +11,7 @@ import { PedVendService } from '../../services';
 export class PedvendDatagridDetailComponent implements OnInit {
   @Input() id: number;
 
-  pedvend$: Observable<PedVend>;
+  pedvend$: Observable<PedidoDetalhado>;
 
   constructor(private service: PedVendService) {}
 

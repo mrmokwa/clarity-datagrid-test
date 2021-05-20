@@ -2,11 +2,11 @@
     <tbody>
         <tr>
             <th>Divisão</th>
-            <td>{{ pedvend.divisaoId }}</td>
+            <td>{{ pedvend.divisao }}</td>
         </tr>
         <tr>
             <th>Pedido</th>
-            <td>{{ pedvend.numero }}</td>
+            <td>{{ pedvend.pedido }}</td>
         </tr>
         <tr>
             <th>Cliente</th>
@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <th>Representante</th>
-            <td>{{ pedvend.repres }}</td>
+            <td>{{ pedvend.represNome }}</td>
         </tr>
     </tbody>
 </table>
@@ -40,27 +40,6 @@
         <tr>
             <th>Análise Comercial</th>
             <td>{{ pedvend.comercial | comercial }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<table class="table table-vertical">
-    <tbody>
-        <tr>
-            <th>Tipo de Frete</th>
-            <td>{{ pedvend.tipoFrete }}</td>
-        </tr>
-        <tr>
-            <th>Transportadora</th>
-            <td>{{ pedvend.transp }}</td>
-        </tr>
-        <tr>
-            <th>Condição de Pagamento</th>
-            <td>{{ pedvend.condPgto }}</td>
-        </tr>
-        <tr>
-            <th>Observações</th>
-            <td>{{ pedvend.observacoes }}</td>
         </tr>
     </tbody>
 </table>

@@ -8,6 +8,9 @@ import { PedvendModule } from './pedvend/pedvend.module';
 import { registerLocaleData } from '@angular/common';
 
 import localePt from '@angular/common/locales/pt';
+import { ClienteModule } from './cliente/cliente.module';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 registerLocaleData(localePt);
 
@@ -17,7 +20,10 @@ registerLocaleData(localePt);
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    CoreModule,
     PedvendModule,
+    ClienteModule,
+    SharedModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },

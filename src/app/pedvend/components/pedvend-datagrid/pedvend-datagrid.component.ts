@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { ClrDatagridStateInterface } from '@clr/angular';
-import { SituacaoOpcoes } from '..';
-import { PedVend, PedVendResumido } from '../../pedvend.model';
-import { PedVendFiltros, PedVendService } from '../../services';
+import { Pedido, PedidoDetalhado, PedidoFiltro } from '../../pedvend.model';
+import { PedVendService } from '../../services';
 
 @Component({
   selector: 'app-pedvend-datagrid',
@@ -10,50 +9,28 @@ import { PedVendFiltros, PedVendService } from '../../services';
   styleUrls: ['./pedvend-datagrid.component.css'],
 })
 export class PedvendDatagridComponent {
+  pedidos: Pedido[];
   total: number;
   loading = true;
-  pedidos: PedVendResumido[];
 
-  winsFilter: any;
   constructor(private pedVendService: PedVendService) {}
 
-  refresh(state: ClrDatagridStateInterface<PedVend>): void {
+  refresh(state: ClrDatagridStateInterface<PedidoDetalhado>): void {
     this.loading = true;
 
-    this.pedVendService
-      .getAll(
-        this.montarFiltro(state.filters),
-        state.page.current,
-        state.page.size
-      )
-      .subscribe(
-        (retorno) => {
-          this.pedidos = retorno.data;
-          this.total = retorno.pagination.numRecords;
-          this.loading = false;
-        },
-        () => (this.loading = false)
-      );
-  }
+    const filter = state.filters
+      .map(({ property, value }) => ({ [property]: value }))
+      .reduce((obj: any, val: any) => Object.assign(obj, val));
 
-  montarFiltro(filters: DatagridFilter[]): PedVendFiltros {
-    let situacao: SituacaoOpcoes = 'TODOS';
-    let dias: number;
-
-    filters?.forEach((filtro) => {
-      switch (filtro.property) {
-        case 'situacao':
-          situacao = filtro.value;
-          break;
-
-        case 'dias':
-          dias = filtro.value;
-
-        default:
-          break;
-      }
+    const params: PedidoFiltro = Object.assign(filter, {
+      pageNumber: state.page.current,
+      pageSize: state.page.size,
     });
 
-    return { cliente: 0, situacao, dias };
+    this.pedVendService.getAll(params).subscribe(({ data, paginacao }) => {
+      this.pedidos = data;
+      this.total = paginacao.registros;
+      this.loading = false;
+    });
   }
 }

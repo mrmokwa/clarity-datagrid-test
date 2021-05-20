@@ -1,34 +1,56 @@
-export interface PedVendResumido {
+import { Cliente } from '../cliente/cliente.model';
+
+export enum AnaliseFinanceira {
+  Aprovado = 'A',
+  Bloqueado = 'B',
+  Rejeitado = 'R',
+}
+
+export enum AnaliseComercial {
+  Aprovado = 'A',
+  Bloqueado = 'B',
+  Rejeitado = 'R',
+}
+
+export enum Situacao {
+  Atendido = 'A',
+  Cancelado = 'C',
+  Pendente = 'P',
+  Transferido = 'T',
+}
+
+export interface Pedido {
   id: number;
-  divisaoId: string;
+  pedido: number;
   divisao: string;
-  numero: number;
+  entrega: Date;
   entrada: Date;
   clienteId: number;
-  cliente: string;
-  represId: number;
-  repres: string;
-  situacao: PedVendSituacao;
+  clienteNome: string;
+  financeiro: AnaliseFinanceira;
+  comercial: AnaliseComercial;
+  situacao: Situacao;
 }
 
-export interface PedVend extends PedVendResumido {
-  entrega: Date;
-  condPgto: string;
-  tipoFrete: string;
-  transpId: number;
-  transp: string;
-  financeiro: string;
-  comercial: string;
-  itens: PedVendItem[];
-  observacoes: string;
-}
-
-export interface PedVendItem {
+export interface PedidoItem {
   sequencia: number;
-  codigo: string;
+  item: string;
   descricao: string;
   quantidade: number;
-  valor: number;
+  unitario: number;
 }
 
-export type PedVendSituacao = 'A' | 'C' | 'P' | 'T';
+export interface PedidoDetalhado
+  extends Omit<Pedido, 'clienteId' | 'clienteNome'> {
+  represId: number;
+  represNome: string;
+  cliente: Cliente;
+  itens: PedidoItem[];
+}
+
+export interface PedidoFiltro extends PaginacaoFiltro {
+  situacao?: Situacao;
+  numDiasEntrada?: number;
+  clienteNome?: string;
+  clienteCgc?: string;
+}

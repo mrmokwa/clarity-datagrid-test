@@ -1,8 +1,8 @@
 import { Component, EventEmitter } from '@angular/core';
 import { ClrDatagridFilter, ClrDatagridFilterInterface } from '@clr/angular';
-import { PedVendSituacao } from '../../pedvend.model';
+import { Situacao } from '../../pedvend.model';
 
-export type SituacaoOpcoes = PedVendSituacao | 'TODOS';
+export type SituacaoOpcoes = Situacao | 'TODOS';
 
 type SituacaoFilter = {
   property: string;
@@ -15,7 +15,8 @@ type SituacaoFilter = {
   styleUrls: ['./pedvend-datagrid-filter-situacao.component.css'],
 })
 export class PedvendDatagridFilterSituacaoComponent
-  implements ClrDatagridFilterInterface<SituacaoFilter> {
+  implements ClrDatagridFilterInterface<SituacaoFilter>
+{
   changes = new EventEmitter<boolean>(false);
 
   selected: SituacaoOpcoes = 'TODOS';

@@ -1,1 +1,15 @@
-<app-pedvend-main></app-pedvend-main>
+<clr-tabs>
+    <clr-tab>
+        <button clrTabLink>Pedidos</button>
+        <clr-tab-content *clrIfActive>
+            <app-pedvend-main></app-pedvend-main>
+        </clr-tab-content>
+    </clr-tab>
+
+    <clr-tab>
+        <button clrTabLink>Clientes</button>
+        <clr-tab-content *clrIfActive>
+            <app-cliente-main></app-cliente-main>
+        </clr-tab-content>
+    </clr-tab>
+</clr-tabs>

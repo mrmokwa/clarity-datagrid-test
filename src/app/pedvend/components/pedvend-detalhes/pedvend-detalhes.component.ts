@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PedVend } from '../../pedvend.model';
+import { PedidoDetalhado } from '../../pedvend.model';
 
 @Component({
   selector: 'app-pedvend-detalhes',
@@ -7,7 +7,7 @@ import { PedVend } from '../../pedvend.model';
   styleUrls: ['./pedvend-detalhes.component.css'],
 })
 export class PedvendDetalhesComponent {
-  @Input() pedvend: PedVend;
+  @Input() pedvend: PedidoDetalhado;
 
   constructor() {}
 }
