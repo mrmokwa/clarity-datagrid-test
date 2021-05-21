@@ -28,6 +28,8 @@ export interface Pedido {
   clienteId: number;
   clienteNome: string;
   financeiro: AnaliseFinanceira;
+  represId: number;
+  represNome: string;
   comercial: AnaliseComercial;
   situacao: Situacao;
 }

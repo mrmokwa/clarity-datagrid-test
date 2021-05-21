@@ -22,10 +22,14 @@ export class PedvendDatagridComponent {
       .map(({ property, value }) => ({ [property]: value }))
       .reduce((obj: any, val: any) => Object.assign(obj, val));
 
-    const params: PedidoFiltro = Object.assign(filter, {
+    const paginacao: PaginacaoFiltro = {
       pageNumber: state.page.current,
       pageSize: state.page.size,
-    });
+      orderBy: state.sort?.by.toString(),
+      orderDesc: state.sort?.reverse,
+    };
+
+    const params: PedidoFiltro = Object.assign(filter, paginacao);
 
     this.pedVendService.getAll(params).subscribe(({ data, paginacao }) => {
       this.pedidos = data;
