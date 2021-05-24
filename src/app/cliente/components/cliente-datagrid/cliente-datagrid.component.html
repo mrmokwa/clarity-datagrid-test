@@ -23,9 +23,14 @@
     <clr-dg-column>
         <ng-container *clrDgHideableColumn="{hidden: true}">Pais</ng-container>
     </clr-dg-column>
-    <clr-dg-column [clrDgField]="'situacao'">Situação</clr-dg-column>
+    <clr-dg-column [clrDgField]="'situacao'">
+        Situação
+        <clr-dg-filter>
+            <app-cliente-datagrid-situacao-filter></app-cliente-datagrid-situacao-filter>
+        </clr-dg-filter>
+    </clr-dg-column>
 
-    <clr-dg-row *ngFor="let cliente of lista" [clrDgItem]="cliente.id">
+    <clr-dg-row *ngFor="let cliente of lista" [clrDgItem]="cliente">
         <clr-dg-cell>{{ cliente.nome }}</clr-dg-cell>
         <clr-dg-cell>{{ cliente.abreviado }}</clr-dg-cell>
         <clr-dg-cell>{{ cliente.contato }}</clr-dg-cell>
@@ -40,10 +45,10 @@
         <clr-dg-cell>{{ cliente.situacao | situacao }}</clr-dg-cell>
     </clr-dg-row>
 
-    <clr-dg-detail *clrIfDetail="let id">
-        <clr-dg-detail-header>Detalhes do Cliente</clr-dg-detail-header>
+    <clr-dg-detail *clrIfDetail="let cliente">
+        <clr-dg-detail-header>{{cliente.nome}}</clr-dg-detail-header>
         <clr-dg-detail-body>
-            <app-cliente-detalhes [id]="id"></app-cliente-detalhes>
+            <app-cliente-detalhes [id]="cliente.id"></app-cliente-detalhes>
         </clr-dg-detail-body>
     </clr-dg-detail>
 

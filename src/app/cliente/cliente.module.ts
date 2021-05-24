@@ -2,23 +2,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 
+import { ClienteMainComponent } from './pages';
+import { NaturezaPipe, SituacaoPipe } from './pipes';
 import {
   ClienteDatagridComponent,
   ClienteDetalhesComponent,
+  ClienteDatagridSituacaoFilterComponent,
 } from './components';
-import { CgcPipe, NaturezaPipe, SituacaoPipe } from './pipes';
-import { ClienteMainComponent } from './pages';
+import { FormsModule } from '@angular/forms';
+
+const PAGES = [ClienteMainComponent];
+const PIPES = [NaturezaPipe, SituacaoPipe];
+const COMPONENTS = [
+  ClienteDatagridComponent,
+  ClienteDetalhesComponent,
+  ClienteDatagridSituacaoFilterComponent,
+];
 
 @NgModule({
-  declarations: [
-    ClienteMainComponent,
-    ClienteDatagridComponent,
-    NaturezaPipe,
-    CgcPipe,
-    SituacaoPipe,
-    ClienteDetalhesComponent,
-  ],
-  imports: [CommonModule, SharedModule],
-  exports: [ClienteMainComponent],
+  declarations: [PAGES, COMPONENTS, PIPES],
+  imports: [CommonModule, FormsModule, SharedModule],
+  exports: [PAGES],
 })
 export class ClienteModule {}

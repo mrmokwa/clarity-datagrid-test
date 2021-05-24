@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Natureza } from '../cliente.model';
+import { Natureza } from '../../cliente/cliente.model';
 
 const cnpj = (v: string) => {
   v = v.replace(/\D/g, ''); //Remove tudo o que não é dígito

@@ -1,5 +1,7 @@
 <ng-container *ngIf="cliente$ | async as cliente">
 
+    <b>Informações Adicionais</b>
+
     <table class="table table-vertical">
         <tbody>
             <tr>
@@ -7,16 +9,8 @@
                 <td>{{ cliente.id }}</td>
             </tr>
             <tr>
-                <th>Nome</th>
-                <td>{{ cliente.nome }}</td>
-            </tr>
-            <tr>
                 <th>Abreviado</th>
                 <td>{{ cliente.abreviado }}</td>
-            </tr>
-            <tr>
-                <th>Contato</th>
-                <td>{{ cliente.contato }}</td>
             </tr>
             <tr>
                 <th>Natureza</th>
@@ -27,10 +21,82 @@
                 <td>{{ cliente.cgc | cgc : cliente.natureza }}</td>
             </tr>
             <tr>
+                <th>Inscrição Estadual</th>
+                <td>{{ cliente.ie }}</td>
+            </tr>
+            <tr>
+                <th>Observações</th>
+                <td>{{ cliente.observacoes }}</td>
+            </tr>
+            <tr>
                 <th>Situacao</th>
                 <td>{{ cliente.situacao | situacao }}</td>
             </tr>
         </tbody>
     </table>
+
+    <br />
+
+    <b>Contato</b>
+
+    <table class="table table-vertical">
+        <tbody>
+            <tr>
+                <th>Nome</th>
+                <td>{{ cliente.contato }}</td>
+            </tr>
+            <tr>
+                <th>Telefone</th>
+                <td>{{ cliente.telefone | telefone }}</td>
+            </tr>
+            <tr>
+                <th>Celular</th>
+                <td>{{ cliente.celular | telefone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ cliente.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br />
+
+    <b>Endereço</b>
+
+    <table class="table table-vertical">
+        <tbody>
+            <tr>
+                <th>Logradouro</th>
+                <td>{{ cliente.endereco }}</td>
+            </tr>
+            <tr>
+                <th>Complemento</th>
+                <td>{{ cliente.complemento }}</td>
+            </tr>
+            <tr>
+                <th>Bairro</th>
+                <td>{{ cliente.bairro }}</td>
+            </tr>
+            <tr>
+                <th>CEP</th>
+                <td>{{ cliente.cep | cep}}</td>
+            </tr>
+            <tr>
+                <th>Cidade</th>
+                <td>{{ cliente.cidade }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ cliente.estado }}</td>
+            </tr>
+            <tr>
+                <th>Pais</th>
+                <td>{{ cliente.pais }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br />
 
 </ng-container>
