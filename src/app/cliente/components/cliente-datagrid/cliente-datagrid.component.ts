@@ -26,4 +26,8 @@ export class ClienteDatagridComponent {
         this.loading = false;
       });
   }
+
+  focus(open: boolean, ref: CustomDgFilter) {
+    if (open) ref.focus();
+  }
 }

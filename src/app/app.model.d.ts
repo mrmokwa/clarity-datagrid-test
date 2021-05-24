@@ -25,3 +25,7 @@ interface DatagridFilter {
   property: string;
   value: any;
 }
+
+interface CustomDgFilter {
+  focus: () => void;
+}

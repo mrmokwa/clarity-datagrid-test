@@ -25,8 +25,8 @@
     </clr-dg-column>
     <clr-dg-column [clrDgField]="'situacao'">
         Situação
-        <clr-dg-filter>
-            <app-cliente-datagrid-situacao-filter></app-cliente-datagrid-situacao-filter>
+        <clr-dg-filter (clrDgFilterOpenChange)="focus($event, situacao)">
+            <app-cliente-datagrid-situacao-filter #situacao></app-cliente-datagrid-situacao-filter>
         </clr-dg-filter>
     </clr-dg-column>
 
