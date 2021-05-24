@@ -8,8 +8,6 @@ export class DatagridService {
   constructor() {}
 
   filters<T>(state: ClrDatagridStateInterface<unknown>) {
-    console.log(state);
-
     const filter = state.filters
       ? state.filters
           .map(({ property, value }) => ({ [property]: value }))
