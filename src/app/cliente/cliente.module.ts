@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { ClienteMainComponent } from './pages';
 import { ClienteDatagridComponent } from './components';
-import { CgcPipe, NaturezaPipe } from './pipes';
-import { SituacaoPipe } from './pipes/situacao.pipe';
+import { CgcPipe, NaturezaPipe, SituacaoPipe } from './pipes';
 
 @NgModule({
   declarations: [
