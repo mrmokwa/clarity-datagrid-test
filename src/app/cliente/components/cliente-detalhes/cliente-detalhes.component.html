@@ -1,0 +1,36 @@
+<ng-container *ngIf="cliente$ | async as cliente">
+
+    <table class="table table-vertical">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cliente.id }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ cliente.nome }}</td>
+            </tr>
+            <tr>
+                <th>Abreviado</th>
+                <td>{{ cliente.abreviado }}</td>
+            </tr>
+            <tr>
+                <th>Contato</th>
+                <td>{{ cliente.contato }}</td>
+            </tr>
+            <tr>
+                <th>Natureza</th>
+                <td>{{ cliente.natureza | natureza }}</td>
+            </tr>
+            <tr>
+                <th>Documento</th>
+                <td>{{ cliente.cgc | cgc : cliente.natureza }}</td>
+            </tr>
+            <tr>
+                <th>Situacao</th>
+                <td>{{ cliente.situacao | situacao }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</ng-container>

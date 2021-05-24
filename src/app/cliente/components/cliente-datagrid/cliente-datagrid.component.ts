@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ClrDatagridStateInterface } from '@clr/angular';
 import { Cliente, ClienteDetalhado, ClienteFilter } from '../../cliente.model';
-import { ClienteService } from '../../services/cliente.service';
+import { ClienteService } from '../../services';
 
 @Component({
   selector: 'app-cliente-datagrid',

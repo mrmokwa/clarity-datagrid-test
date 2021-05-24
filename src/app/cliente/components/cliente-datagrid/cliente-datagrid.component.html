@@ -1,16 +1,28 @@
 <clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="loading">
 
     <clr-dg-column [clrDgField]="'nome'">Nome</clr-dg-column>
-    <clr-dg-column [clrDgField]="'abreviado'"><ng-container *clrDgHideableColumn="{hidden: true}">Abreviado</ng-container></clr-dg-column>
-    <clr-dg-column><ng-container *clrDgHideableColumn="{hidden: false}">Contato</ng-container></clr-dg-column>
-    <clr-dg-column><ng-container *clrDgHideableColumn="{hidden: true}">Natureza</ng-container></clr-dg-column>
+    <clr-dg-column [clrDgField]="'abreviado'">
+        <ng-container *clrDgHideableColumn="{hidden: true}">Abreviado</ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: false}">Contato</ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: true}">Natureza</ng-container>
+    </clr-dg-column>
     <clr-dg-column [clrDgField]="'cgc'">Documento</clr-dg-column>
-    <clr-dg-column><ng-container *clrDgHideableColumn="{hidden: true}">Email</ng-container></clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: true}">Email</ng-container>
+    </clr-dg-column>
     <clr-dg-column [clrDgField]="'telefone'">Telefone</clr-dg-column>
-    <clr-dg-column><ng-container *clrDgHideableColumn="{hidden: true}">Celular</ng-container></clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: true}">Celular</ng-container>
+    </clr-dg-column>
     <clr-dg-column [clrDgField]="'cidade'">Cidade</clr-dg-column>
     <clr-dg-column>UF</clr-dg-column>
-    <clr-dg-column><ng-container *clrDgHideableColumn="{hidden: true}">Pais</ng-container></clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: true}">Pais</ng-container>
+    </clr-dg-column>
     <clr-dg-column [clrDgField]="'situacao'">Situação</clr-dg-column>
 
     <clr-dg-row *ngFor="let cliente of lista" [clrDgItem]="cliente.id">
@@ -30,7 +42,9 @@
 
     <clr-dg-detail *clrIfDetail="let id">
         <clr-dg-detail-header>Detalhes do Cliente</clr-dg-detail-header>
-        <clr-dg-detail-body>Detalhes</clr-dg-detail-body>
+        <clr-dg-detail-body>
+            <app-cliente-detalhes [id]="id"></app-cliente-detalhes>
+        </clr-dg-detail-body>
     </clr-dg-detail>
 
     <clr-dg-footer>
