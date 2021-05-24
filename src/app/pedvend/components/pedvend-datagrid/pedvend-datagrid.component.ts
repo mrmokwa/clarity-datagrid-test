@@ -25,9 +25,15 @@ export class PedvendDatagridComponent {
     const paginacao: PaginacaoFiltro = {
       pageNumber: state.page.current,
       pageSize: state.page.size,
-      orderBy: state.sort?.by.toString(),
-      orderDesc: state.sort?.reverse,
     };
+
+    if (state.sort?.by) {
+      paginacao.orderBy = state.sort.by.toString();
+    }
+
+    if (state.sort?.reverse) {
+      paginacao.orderDesc = state.sort.reverse;
+    }
 
     const params: PedidoFiltro = Object.assign(filter, paginacao);
 

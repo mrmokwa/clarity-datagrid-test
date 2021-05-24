@@ -4,26 +4,42 @@
         Pedido
     </clr-dg-column>
 
-    <clr-dg-column [clrDgField]="'divisao'" [clrDgSortBy]="null">
-        Divisao
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: true}">Divisao</ng-container>
     </clr-dg-column>
 
-    <clr-dg-column [clrDgField]="'dias'" [clrFilterValue]="'180'">
+    <clr-dg-column [clrDgField]="'diasEntrada'" [clrFilterValue]="'90'">
         Entrada
         <clr-dg-filter [clrDgFilter]="entradaFilter">
             <app-pedvend-datagrid-filter-entrada #entradaFilter></app-pedvend-datagrid-filter-entrada>
         </clr-dg-filter>
     </clr-dg-column>
 
-    <clr-dg-column [clrDgField]="'cliente'">
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: false}">Previsão Entrega</ng-container>
+    </clr-dg-column>
+
+    <clr-dg-column [clrDgField]="'clienteNome'">
         Cliente
         <clr-dg-filter>
             <app-pedvend-datagrid-filter-cliente></app-pedvend-datagrid-filter-cliente>
         </clr-dg-filter>
     </clr-dg-column>
 
+    <clr-dg-column [clrDgField]="'clientePedido'">
+        <ng-container *clrDgHideableColumn="{hidden: true}">Pedido Cliente</ng-container>
+    </clr-dg-column>
+
     <clr-dg-column>
-        Representante
+        <ng-container *clrDgHideableColumn="{hidden: false}">Representante</ng-container>
+    </clr-dg-column>
+
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: true}">Financeiro</ng-container>
+    </clr-dg-column>
+
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: true}">Comercial</ng-container>
     </clr-dg-column>
 
     <clr-dg-column>
@@ -37,8 +53,12 @@
         <clr-dg-cell>{{ pedido.pedido }}</clr-dg-cell>
         <clr-dg-cell>{{ pedido.divisao }}</clr-dg-cell>
         <clr-dg-cell>{{ pedido.entrada | date : 'shortDate' }}</clr-dg-cell>
+        <clr-dg-cell>{{ pedido.entrega | date : 'shortDate' }}</clr-dg-cell>
         <clr-dg-cell>{{ pedido.clienteNome }}</clr-dg-cell>
+        <clr-dg-cell>{{ pedido.clientePedido }}</clr-dg-cell>
         <clr-dg-cell>{{ pedido.represNome }}</clr-dg-cell>
+        <clr-dg-cell>{{ pedido.financeiro | financeiro}}</clr-dg-cell>
+        <clr-dg-cell>{{ pedido.comercial | comercial }}</clr-dg-cell>
         <clr-dg-cell>{{ pedido.situacao | situacao }}</clr-dg-cell>
     </clr-dg-row>
 

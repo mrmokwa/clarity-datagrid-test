@@ -25,13 +25,14 @@ export interface Pedido {
   divisao: string;
   entrega: Date;
   entrada: Date;
-  clienteId: number;
-  clienteNome: string;
   financeiro: AnaliseFinanceira;
-  represId: number;
-  represNome: string;
   comercial: AnaliseComercial;
   situacao: Situacao;
+  clientePedido: string;
+  clienteId: number;
+  clienteNome: string;
+  represId: number;
+  represNome: string;
 }
 
 export interface PedidoItem {
@@ -51,8 +52,9 @@ export interface PedidoDetalhado
 }
 
 export interface PedidoFiltro extends PaginacaoFiltro {
+  divisao?: string;
+  pedido?: string;
   situacao?: Situacao;
-  numDiasEntrada?: number;
+  diasEntrada?: number;
   clienteNome?: string;
-  clienteCgc?: string;
 }

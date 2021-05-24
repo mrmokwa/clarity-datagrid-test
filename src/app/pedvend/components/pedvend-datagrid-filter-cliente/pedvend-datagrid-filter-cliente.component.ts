@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ClrDatagridFilter, ClrDatagridFilterInterface } from '@clr/angular';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -12,7 +12,7 @@ export class PedvendDatagridFilterClienteComponent
   implements ClrDatagridFilterInterface<DatagridFilter>, OnInit, OnDestroy
 {
   changes = new Subject();
-  update = new Subject();
+  debounce = new Subject();
 
   clienteNome = '';
 
@@ -25,13 +25,11 @@ export class PedvendDatagridFilterClienteComponent
   }
 
   ngOnInit() {
-    this.update
-      .pipe(debounceTime(500))
-      .subscribe(() => this.changes.next(true));
+    this.debounce.pipe(debounceTime(500)).subscribe(() => this.changes.next());
   }
 
   ngOnDestroy() {
-    this.update.unsubscribe();
+    this.debounce.unsubscribe();
   }
 
   isActive = () => this.clienteNome !== '';

@@ -1,5 +1,7 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ClrDatagridFilter, ClrDatagridFilterInterface } from '@clr/angular';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pedvend-datagrid-filter-entrada',
@@ -7,17 +9,27 @@ import { ClrDatagridFilter, ClrDatagridFilterInterface } from '@clr/angular';
   styleUrls: ['./pedvend-datagrid-filter-entrada.component.css'],
 })
 export class PedvendDatagridFilterEntradaComponent
-  implements ClrDatagridFilterInterface<DatagridFilter> {
-  changes = new EventEmitter<boolean>(false);
+  implements OnInit, OnDestroy, ClrDatagridFilterInterface<DatagridFilter>
+{
+  changes = new Subject();
+  debounce = new Subject();
 
   dias: number = 90;
 
   get state(): DatagridFilter {
-    return { property: 'dias', value: this.dias };
+    return { property: 'diasEntrada', value: this.dias };
   }
 
   constructor(filterContainer: ClrDatagridFilter) {
     filterContainer.setFilter(this);
+  }
+
+  ngOnInit() {
+    this.debounce.pipe(debounceTime(500)).subscribe(() => this.changes.next());
+  }
+
+  ngOnDestroy() {
+    this.debounce.unsubscribe();
   }
 
   isActive = () => this.dias !== 0;
