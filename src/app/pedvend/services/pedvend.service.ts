@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DatagridService } from 'src/app/core';
 import { Pedido, PedidoDetalhado, PedidoFiltro } from '../pedvend.model';
 
 type PedVendPaged = Retorno<Pedido, PedidoFiltro>;
@@ -8,8 +9,10 @@ type PedVendPaged = Retorno<Pedido, PedidoFiltro>;
 @Injectable({
   providedIn: 'root',
 })
-export class PedVendService {
-  constructor(private httpClient: HttpClient) {}
+export class PedVendService extends DatagridService {
+  constructor(private httpClient: HttpClient) {
+    super();
+  }
 
   getAll(filtros: PedidoFiltro): Observable<PedVendPaged> {
     const params = new URLSearchParams(<any>filtros).toString();

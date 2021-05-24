@@ -1,1 +1,42 @@
-<p>cliente-datagrid works!</p>
+<clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="loading">
+
+    <clr-dg-column [clrDgField]="'nome'">Nome</clr-dg-column>
+    <clr-dg-column [clrDgField]="'abreviado'"><ng-container *clrDgHideableColumn="{hidden: true}">Abreviado</ng-container></clr-dg-column>
+    <clr-dg-column><ng-container *clrDgHideableColumn="{hidden: false}">Contato</ng-container></clr-dg-column>
+    <clr-dg-column><ng-container *clrDgHideableColumn="{hidden: true}">Natureza</ng-container></clr-dg-column>
+    <clr-dg-column [clrDgField]="'cgc'">Documento</clr-dg-column>
+    <clr-dg-column><ng-container *clrDgHideableColumn="{hidden: true}">Email</ng-container></clr-dg-column>
+    <clr-dg-column [clrDgField]="'telefone'">Telefone</clr-dg-column>
+    <clr-dg-column [clrDgField]="'cidade'">Cidade</clr-dg-column>
+    <clr-dg-column>UF</clr-dg-column>
+    <clr-dg-column><ng-container *clrDgHideableColumn="{hidden: true}">Pais</ng-container></clr-dg-column>
+    <clr-dg-column [clrDgField]="'situacao'">Situação</clr-dg-column>
+
+    <clr-dg-row *ngFor="let cliente of lista" [clrDgItem]="cliente.id">
+        <clr-dg-cell>{{ cliente.nome }}</clr-dg-cell>
+        <clr-dg-cell>{{ cliente.abreviado }}</clr-dg-cell>
+        <clr-dg-cell>{{ cliente.contato }}</clr-dg-cell>
+        <clr-dg-cell>{{ cliente.natureza | natureza }}</clr-dg-cell>
+        <clr-dg-cell>{{ cliente.cgc | cgc : cliente.natureza }}</clr-dg-cell>
+        <clr-dg-cell>{{ cliente.email }}</clr-dg-cell>
+        <clr-dg-cell>{{ cliente.telefone }}</clr-dg-cell>
+        <clr-dg-cell>{{ cliente.cidade }}</clr-dg-cell>
+        <clr-dg-cell>{{ cliente.estado }}</clr-dg-cell>
+        <clr-dg-cell>{{ cliente.pais }}</clr-dg-cell>
+        <clr-dg-cell>{{ cliente.situacao | situacao }}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-detail *clrIfDetail="let id">
+        <clr-dg-detail-header>Detalhes do Cliente</clr-dg-detail-header>
+        <clr-dg-detail-body>Detalhes</clr-dg-detail-body>
+    </clr-dg-detail>
+
+    <clr-dg-footer>
+        <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="total">
+            <clr-dg-page-size [clrPageSizeOptions]="[10,20,50]">Pedidos por página</clr-dg-page-size>
+            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} de {{pagination.totalItems}} pedidos
+        </clr-dg-pagination>
+    </clr-dg-footer>
+
+    <clr-dg-placeholder>Nenhum cliente localizado</clr-dg-placeholder>
+</clr-datagrid>

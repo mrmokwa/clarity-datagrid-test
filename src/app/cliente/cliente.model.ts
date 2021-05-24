@@ -13,7 +13,9 @@ export interface Cliente {
   id: number;
   pessoaId: number;
   nome: string;
+  abreviado: string;
   natureza: Natureza;
+  contato: string;
   cgc: string;
   email: string;
   telefone: string;

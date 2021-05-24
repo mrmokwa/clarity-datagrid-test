@@ -13,34 +13,17 @@ export class PedvendDatagridComponent {
   total: number;
   loading = true;
 
-  constructor(private pedVendService: PedVendService) {}
+  constructor(private service: PedVendService) {}
 
   refresh(state: ClrDatagridStateInterface<PedidoDetalhado>): void {
     this.loading = true;
 
-    const filter = state.filters
-      .map(({ property, value }) => ({ [property]: value }))
-      .reduce((obj: any, val: any) => Object.assign(obj, val));
-
-    const paginacao: PaginacaoFiltro = {
-      pageNumber: state.page.current,
-      pageSize: state.page.size,
-    };
-
-    if (state.sort?.by) {
-      paginacao.orderBy = state.sort.by.toString();
-    }
-
-    if (state.sort?.reverse) {
-      paginacao.orderDesc = state.sort.reverse;
-    }
-
-    const params: PedidoFiltro = Object.assign(filter, paginacao);
-
-    this.pedVendService.getAll(params).subscribe(({ data, paginacao }) => {
-      this.pedidos = data;
-      this.total = paginacao.registros;
-      this.loading = false;
-    });
+    this.service
+      .getAll(this.service.filters<PedidoFiltro>(state))
+      .subscribe(({ data, paginacao }) => {
+        this.pedidos = data;
+        this.total = paginacao.registros;
+        this.loading = false;
+      });
   }
 }
