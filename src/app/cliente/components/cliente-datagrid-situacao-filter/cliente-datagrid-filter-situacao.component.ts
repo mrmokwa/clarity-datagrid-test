@@ -18,11 +18,11 @@ enum SituacaoFilter {
 type Retorno = { property: string; value: string };
 
 @Component({
-  selector: 'app-cliente-datagrid-situacao-filter',
-  templateUrl: './cliente-datagrid-situacao-filter.component.html',
-  styleUrls: ['./cliente-datagrid-situacao-filter.component.css'],
+  selector: 'app-cliente-datagrid-filter-situacao',
+  templateUrl: './cliente-datagrid-filter-situacao.component.html',
+  styleUrls: ['./cliente-datagrid-filter-situacao.component.css'],
 })
-export class ClienteDatagridSituacaoFilterComponent
+export class ClienteDatagridFilterSituacaoComponent
   implements
     ClrDatagridFilterInterface<Retorno>,
     CustomDgFilter,

@@ -8,7 +8,7 @@ import { NaturezaPipe, SituacaoPipe } from './pipes';
 import {
   ClienteDatagridComponent,
   ClienteDetalhesComponent,
-  ClienteDatagridSituacaoFilterComponent,
+  ClienteDatagridFilterSituacaoComponent,
   ClienteDatagridFilterNomeComponent,
 } from './components';
 
@@ -17,7 +17,7 @@ const PIPES = [NaturezaPipe, SituacaoPipe];
 const COMPONENTS = [
   ClienteDatagridComponent,
   ClienteDetalhesComponent,
-  ClienteDatagridSituacaoFilterComponent,
+  ClienteDatagridFilterSituacaoComponent,
   ClienteDatagridFilterNomeComponent,
 ];
 
