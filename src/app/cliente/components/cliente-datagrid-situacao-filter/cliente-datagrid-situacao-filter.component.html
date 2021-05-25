@@ -1,16 +1,16 @@
 <clr-radio-container (change)="changes.next()">
     <clr-radio-wrapper>
-        <input type="radio" clrRadio value="A" [(ngModel)]="selected" />
+        <input type="radio" clrRadio value="A" [(ngModel)]="value" #ativos />
         <label>Ativos</label>
     </clr-radio-wrapper>
 
     <clr-radio-wrapper>
-        <input type="radio" clrRadio value="I" [(ngModel)]="selected" />
+        <input type="radio" clrRadio value="I" [(ngModel)]="value" #inativos />
         <label>Inativos</label>
     </clr-radio-wrapper>
 
     <clr-radio-wrapper>
-        <input #focus type="radio" clrRadio value="TODOS" [(ngModel)]="selected" />
+        <input type="radio" clrRadio value="" [(ngModel)]="value" #todos />
         <label>Todos</label>
     </clr-radio-wrapper>
 </clr-radio-container>
