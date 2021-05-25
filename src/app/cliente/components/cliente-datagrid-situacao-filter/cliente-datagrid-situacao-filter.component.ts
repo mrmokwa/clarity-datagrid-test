@@ -35,16 +35,16 @@ export class ClienteDatagridSituacaoFilterComponent
 
   changes = new Subject();
   debouncer = new Subject();
-  value = SituacaoFilter.Todos;
+  selected = SituacaoFilter.Todos;
 
   get state(): Retorno {
-    return { property: 'situacao', value: this.value };
+    return { property: 'situacao', value: this.selected };
   }
 
   get selectedElement(): ElementRef<any> {
-    return this.value === SituacaoFilter.Ativos
+    return this.selected === SituacaoFilter.Ativos
       ? this.ativos
-      : this.value === SituacaoFilter.Inativos
+      : this.selected === SituacaoFilter.Inativos
       ? this.inativos
       : this.todos;
   }
@@ -61,9 +61,9 @@ export class ClienteDatagridSituacaoFilterComponent
     this.debouncer.unsubscribe();
   }
 
-  isActive = () => this.value !== SituacaoFilter.Todos;
+  isActive = () => this.selected !== SituacaoFilter.Todos;
 
-  accepts = (novo: Retorno) => novo.value !== this.value;
+  accepts = (novo: Retorno) => novo.value !== this.selected;
 
   focus = () => setTimeout(() => this.selectedElement.nativeElement.focus(), 0);
 }
