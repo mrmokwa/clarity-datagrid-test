@@ -18,13 +18,14 @@ export class ClienteDatagridComponent {
   refresh(state: ClrDatagridStateInterface<ClienteDetalhado>): void {
     this.loading = true;
 
-    this.service
-      .getAll(this.service.filters<ClienteFilter>(state))
-      .subscribe(({ data, paginacao }) => {
+    this.service.getAll(this.service.filters<ClienteFilter>(state)).subscribe(
+      ({ data, paginacao }) => {
         this.lista = data;
         this.total = paginacao.registros;
         this.loading = false;
-      });
+      },
+      () => (this.loading = false)
+    );
   }
 
   focus(open: boolean, ref: CustomDgFilter) {
