@@ -1,5 +1,3 @@
 export * from './cliente-datagrid/cliente-datagrid.component';
 export * from './cliente-datagrid-filter-situacao/cliente-datagrid-filter-situacao.component';
 export * from './cliente-detalhes/cliente-detalhes.component';
-export * from './cliente-datagrid-filter-nome/cliente-datagrid-filter-nome.component';
-export * from './cliente-datagrid-filter-documento/cliente-datagrid-filter-documento.component';

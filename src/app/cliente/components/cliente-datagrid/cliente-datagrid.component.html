@@ -3,36 +3,64 @@
     <clr-dg-column [clrDgField]="'nome'">
         Nome
         <clr-dg-filter [clrDgFilter]="nome" (clrDgFilterOpenChange)="focus($event, nome)">
-            <app-cliente-datagrid-filter-nome #nome></app-cliente-datagrid-filter-nome>
+            <app-datagrid-filter-string property="nome" #nome></app-datagrid-filter-string>
         </clr-dg-filter>
     </clr-dg-column>
+
     <clr-dg-column [clrDgField]="'abreviado'">
-        <ng-container *clrDgHideableColumn="{hidden: true}">Abreviado</ng-container>
+        <ng-container *clrDgHideableColumn="{hidden: true}">
+            Abreviado
+        </ng-container>
+        <clr-dg-filter [clrDgFilter]="abreviado" (clrDgFilterOpenChange)="focus($event, abreviado)">
+            <app-datagrid-filter-string property="abreviado" #abreviado></app-datagrid-filter-string>
+        </clr-dg-filter>
     </clr-dg-column>
+
     <clr-dg-column>
         <ng-container *clrDgHideableColumn="{hidden: false}">Contato</ng-container>
     </clr-dg-column>
+
     <clr-dg-column>
         <ng-container *clrDgHideableColumn="{hidden: true}">Natureza</ng-container>
     </clr-dg-column>
+
     <clr-dg-column [clrDgField]="'cgc'">
         Documento
         <clr-dg-filter [clrDgFilter]="documento" (clrDgFilterOpenChange)="focus($event, documento)">
-            <app-cliente-datagrid-filter-documento #documento></app-cliente-datagrid-filter-documento>
+            <app-datagrid-filter-string property="cgc" #documento></app-datagrid-filter-string>
         </clr-dg-filter>
     </clr-dg-column>
+
     <clr-dg-column>
         <ng-container *clrDgHideableColumn="{hidden: true}">Email</ng-container>
     </clr-dg-column>
-    <clr-dg-column [clrDgField]="'telefone'">Telefone</clr-dg-column>
+
+    <clr-dg-column [clrDgField]="'telefone'">
+        Telefone
+        <clr-dg-filter [clrDgFilter]="telefone" (clrDgFilterOpenChange)="focus($event, telefone)">
+            <app-datagrid-filter-string property="telefone" #telefone></app-datagrid-filter-string>
+        </clr-dg-filter>
+    </clr-dg-column>
+
     <clr-dg-column>
         <ng-container *clrDgHideableColumn="{hidden: true}">Celular</ng-container>
     </clr-dg-column>
-    <clr-dg-column [clrDgField]="'cidade'">Cidade</clr-dg-column>
-    <clr-dg-column>UF</clr-dg-column>
-    <clr-dg-column>
-        <ng-container *clrDgHideableColumn="{hidden: true}">Pais</ng-container>
+
+    <clr-dg-column [clrDgField]="'cidade'">
+        Cidade
+        <clr-dg-filter [clrDgFilter]="cidade" (clrDgFilterOpenChange)="focus($event, cidade)">
+            <app-datagrid-filter-string property="cidade" #cidade></app-datagrid-filter-string>
+        </clr-dg-filter>
     </clr-dg-column>
+
+    <clr-dg-column>UF</clr-dg-column>
+
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: true}">
+            Pais
+        </ng-container>
+    </clr-dg-column>
+
     <clr-dg-column [clrDgField]="'situacao'">
         Situação
         <clr-dg-filter [clrDgFilter]="situacao" (clrDgFilterOpenChange)="focus($event, situacao)">

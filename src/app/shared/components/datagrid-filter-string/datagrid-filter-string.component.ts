@@ -1,37 +1,40 @@
 import {
   Component,
   ElementRef,
+  Input,
   OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
 import { ClrDatagridFilterInterface } from '@clr/angular';
 import { Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { takeUntil, debounceTime } from 'rxjs/operators';
 
 type Retorno = { property: string; value: string };
 
 @Component({
-  selector: 'app-cliente-datagrid-filter-nome',
-  templateUrl: './cliente-datagrid-filter-nome.component.html',
-  styleUrls: ['./cliente-datagrid-filter-nome.component.css'],
+  selector: 'app-datagrid-filter-string',
+  templateUrl: './datagrid-filter-string.component.html',
+  styleUrls: ['./datagrid-filter-string.component.css'],
 })
-export class ClienteDatagridFilterNomeComponent
+export class DatagridFilterStringComponent
   implements
     ClrDatagridFilterInterface<Retorno>,
     CustomDgFilter,
     OnInit,
     OnDestroy
 {
+  @Input() property: string;
+
   @ViewChild('input', { read: ElementRef }) input: ElementRef;
 
-  nome = '';
+  search = '';
   changes = new Subject();
   debouncer = new Subject();
   unsubscribe = new Subject();
 
   get state(): Retorno {
-    return { property: 'nome', value: this.nome };
+    return { property: this.property, value: this.search };
   }
 
   constructor() {}
@@ -47,9 +50,9 @@ export class ClienteDatagridFilterNomeComponent
     this.unsubscribe.complete();
   }
 
-  isActive = () => this.nome !== '';
+  isActive = () => this.search !== '';
 
-  accepts = (novo: Retorno) => novo.value !== this.nome;
+  accepts = (novo: Retorno) => novo.value !== this.search;
 
   focus = () => setTimeout(() => this.input.nativeElement.focus(), 0);
 }

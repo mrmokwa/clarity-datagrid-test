@@ -9,8 +9,6 @@ import {
   ClienteDatagridComponent,
   ClienteDetalhesComponent,
   ClienteDatagridFilterSituacaoComponent,
-  ClienteDatagridFilterNomeComponent,
-  ClienteDatagridFilterDocumentoComponent,
 } from './components';
 
 const PAGES = [ClienteMainComponent];
@@ -19,8 +17,6 @@ const COMPONENTS = [
   ClienteDatagridComponent,
   ClienteDetalhesComponent,
   ClienteDatagridFilterSituacaoComponent,
-  ClienteDatagridFilterNomeComponent,
-  ClienteDatagridFilterDocumentoComponent,
 ];
 
 @NgModule({
