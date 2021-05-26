@@ -5,9 +5,9 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { ClrDatagridFilter, ClrDatagridFilterInterface } from '@clr/angular';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { CustomClrDgFilter } from 'src/app/shared/components';
 
 enum SituacaoFilter {
   Ativos = 'A',
@@ -23,11 +23,7 @@ type Retorno = { property: string; value: string };
   styleUrls: ['./cliente-datagrid-filter-situacao.component.css'],
 })
 export class ClienteDatagridFilterSituacaoComponent
-  implements
-    ClrDatagridFilterInterface<Retorno>,
-    CustomDgFilter,
-    OnInit,
-    OnDestroy
+  implements CustomClrDgFilter, OnInit, OnDestroy
 {
   @ViewChild('ativos', { read: ElementRef }) ativos: ElementRef;
   @ViewChild('inativos', { read: ElementRef }) inativos: ElementRef;
@@ -47,10 +43,6 @@ export class ClienteDatagridFilterSituacaoComponent
       : this.selected === SituacaoFilter.Inativos
       ? this.inativos
       : this.todos;
-  }
-
-  constructor(filterContainer: ClrDatagridFilter) {
-    filterContainer.setFilter(this);
   }
 
   ngOnInit() {

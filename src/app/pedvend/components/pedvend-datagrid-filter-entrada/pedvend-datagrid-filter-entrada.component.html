@@ -1,4 +1,4 @@
 <clr-input-container>
     <label>Dias a considerar</label>
-    <input clrInput placeholder="Dias" [(ngModel)]="dias" (input)="debounce.next()" type="number" />
+    <input #input clrInput placeholder="Dias" [(ngModel)]="dias" (input)="debounce.next()" type="number" />
 </clr-input-container>

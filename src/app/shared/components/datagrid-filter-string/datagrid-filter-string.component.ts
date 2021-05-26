@@ -10,7 +10,15 @@ import { ClrDatagridFilterInterface } from '@clr/angular';
 import { Subject } from 'rxjs';
 import { takeUntil, debounceTime } from 'rxjs/operators';
 
-type Retorno = { property: string; value: string };
+export interface Retorno {
+  property: string;
+  value: string;
+}
+
+export interface CustomClrDgFilter
+  extends Omit<ClrDatagridFilterInterface<Retorno>, 'equals'> {
+  focus: () => void;
+}
 
 @Component({
   selector: 'app-datagrid-filter-string',
@@ -18,11 +26,7 @@ type Retorno = { property: string; value: string };
   styleUrls: ['./datagrid-filter-string.component.css'],
 })
 export class DatagridFilterStringComponent
-  implements
-    ClrDatagridFilterInterface<Retorno>,
-    CustomDgFilter,
-    OnInit,
-    OnDestroy
+  implements CustomClrDgFilter, OnInit, OnDestroy
 {
   @Input() property: string;
 

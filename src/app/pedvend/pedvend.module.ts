@@ -9,30 +9,34 @@ import {
   PedvendDatagridDetailComponent,
   PedvendDatagridFilterSituacaoComponent,
   PedvendDatagridFilterEntradaComponent,
-  PedvendDatagridFilterClienteComponent,
 } from './components';
+
 import {
   PedvendFinanceiroPipe,
   PedvendComercialPipe,
   PedvendSituacaoPipe,
 } from './pipes';
-import { FormsModule } from '@angular/forms';
+
+const PAGES = [PedvendMainComponent];
+
+const COMPONENTS = [
+  PedvendDatagridComponent,
+  PedvendDetalhesComponent,
+  PedvendItensComponent,
+  PedvendDatagridDetailComponent,
+  PedvendDatagridFilterSituacaoComponent,
+  PedvendDatagridFilterEntradaComponent,
+];
+
+const PIPES = [
+  PedvendFinanceiroPipe,
+  PedvendComercialPipe,
+  PedvendSituacaoPipe,
+];
 
 @NgModule({
-  declarations: [
-    PedvendDetalhesComponent,
-    PedvendDatagridComponent,
-    PedvendMainComponent,
-    PedvendItensComponent,
-    PedvendDatagridDetailComponent,
-    PedvendFinanceiroPipe,
-    PedvendComercialPipe,
-    PedvendSituacaoPipe,
-    PedvendDatagridFilterSituacaoComponent,
-    PedvendDatagridFilterEntradaComponent,
-    PedvendDatagridFilterClienteComponent,
-  ],
+  declarations: [PAGES, COMPONENTS, PIPES],
   imports: [SharedModule],
-  exports: [PedvendMainComponent],
+  exports: [PAGES],
 })
 export class PedvendModule {}

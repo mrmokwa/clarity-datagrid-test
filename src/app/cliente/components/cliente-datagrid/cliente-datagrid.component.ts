@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ClrDatagridStateInterface } from '@clr/angular';
+import { CustomClrDgFilter } from 'src/app/shared/components';
 import { Cliente, ClienteDetalhado, ClienteFilter } from '../../cliente.model';
 import { ClienteService } from '../../services';
 
@@ -27,7 +28,7 @@ export class ClienteDatagridComponent {
       });
   }
 
-  focus(open: boolean, ref: CustomDgFilter) {
+  focus(open: boolean, ref: CustomClrDgFilter) {
     if (open) ref.focus();
   }
 }
