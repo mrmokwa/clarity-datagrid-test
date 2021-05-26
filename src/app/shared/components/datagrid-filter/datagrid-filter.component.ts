@@ -6,19 +6,9 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { ClrDatagridFilterInterface } from '@clr/angular';
 import { Subject } from 'rxjs';
 import { takeUntil, debounceTime } from 'rxjs/operators';
-
-export interface Retorno {
-  property: string;
-  value: string;
-}
-
-export interface CustomClrDgFilter
-  extends Omit<ClrDatagridFilterInterface<Retorno>, 'equals'> {
-  focus: () => void;
-}
+import { CustomClrDgFilter, Retorno } from './datagrid-filter.model';
 
 @Component({
   selector: 'app-datagrid-filter',
@@ -28,10 +18,14 @@ export interface CustomClrDgFilter
 export class DatagridFilterComponent
   implements CustomClrDgFilter, OnInit, OnDestroy
 {
-  @Input() property: string;
-  @Input() type: 'text' | 'number' | 'date' = 'text';
+  @Input()
+  property: string;
 
-  @ViewChild('input', { read: ElementRef }) input: ElementRef;
+  @Input()
+  type: 'text' | 'number' | 'date' = 'text';
+
+  @ViewChild('input', { read: ElementRef })
+  input: ElementRef;
 
   search = '';
   changes = new Subject();
