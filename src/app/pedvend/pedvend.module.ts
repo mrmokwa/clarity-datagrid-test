@@ -32,7 +32,7 @@ import { FormsModule } from '@angular/forms';
     PedvendDatagridFilterEntradaComponent,
     PedvendDatagridFilterClienteComponent,
   ],
-  imports: [SharedModule, FormsModule],
+  imports: [SharedModule],
   exports: [PedvendMainComponent],
 })
 export class PedvendModule {}
