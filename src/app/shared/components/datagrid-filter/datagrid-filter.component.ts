@@ -21,11 +21,11 @@ export interface CustomClrDgFilter
 }
 
 @Component({
-  selector: 'app-datagrid-filter-string',
-  templateUrl: './datagrid-filter-string.component.html',
-  styleUrls: ['./datagrid-filter-string.component.css'],
+  selector: 'app-datagrid-filter',
+  templateUrl: './datagrid-filter.component.html',
+  styleUrls: ['./datagrid-filter.component.css'],
 })
-export class DatagridFilterStringComponent
+export class DatagridFilterComponent
   implements CustomClrDgFilter, OnInit, OnDestroy
 {
   @Input() property: string;

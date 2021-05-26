@@ -4,11 +4,11 @@ import { ClarityModule } from '@clr/angular';
 import { FormsModule } from '@angular/forms';
 
 import { CepPipe, CgcPipe, NaturezaPipe, TelefonePipe } from './pipes';
-import { DatagridFilterStringComponent } from './components';
+import { DatagridFilterComponent } from './components';
 
 const PIPES = [CepPipe, TelefonePipe, CgcPipe, NaturezaPipe];
 
-const COMPONENTS = [DatagridFilterStringComponent];
+const COMPONENTS = [DatagridFilterComponent];
 
 @NgModule({
   imports: [ClarityModule, FormsModule],

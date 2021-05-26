@@ -1,1 +1,1 @@
-export * from './datagrid-filter-string/datagrid-filter-string.component';
+export * from './datagrid-filter/datagrid-filter.component';

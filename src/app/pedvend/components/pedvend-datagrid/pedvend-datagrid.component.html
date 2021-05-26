@@ -11,8 +11,8 @@
     <clr-dg-column [clrDgField]="'diasEntrada'" [clrFilterValue]="'90'">
         Entrada
         <clr-dg-filter [clrDgFilter]="entradaFilter">
-            <app-datagrid-filter-string #entradaFilter property='diasEntrada' type="number">
-            </app-datagrid-filter-string>
+            <app-datagrid-filter #entradaFilter property='diasEntrada' type="number">
+            </app-datagrid-filter>
         </clr-dg-filter>
     </clr-dg-column>
 
@@ -23,7 +23,7 @@
     <clr-dg-column [clrDgField]="'clienteNome'">
         Cliente
         <clr-dg-filter>
-            <app-datagrid-filter-string property="clienteNome"></app-datagrid-filter-string>
+            <app-datagrid-filter property="clienteNome"></app-datagrid-filter>
         </clr-dg-filter>
     </clr-dg-column>
 
