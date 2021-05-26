@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Natureza } from '../cliente.model';
+import { Natureza } from '../shared.models';
 
 @Pipe({
   name: 'natureza',

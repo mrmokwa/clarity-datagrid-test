@@ -1,12 +1,8 @@
+import { Natureza } from '../shared/shared.models';
+
 export enum Situacao {
   Ativo = 'A',
   Inativo = 'I',
-}
-
-export enum Natureza {
-  Fisica = 'F',
-  Juridica = 'J',
-  Estrangeira = 'E',
 }
 
 export interface Cliente {

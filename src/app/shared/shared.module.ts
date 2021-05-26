@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ClarityModule } from '@clr/angular';
 import { FormsModule } from '@angular/forms';
 
-import { CepPipe, CgcPipe, TelefonePipe } from './pipes';
+import { CepPipe, CgcPipe, NaturezaPipe, TelefonePipe } from './pipes';
 import { DatagridFilterStringComponent } from './components';
 
-const PIPES = [CepPipe, TelefonePipe, CgcPipe];
+const PIPES = [CepPipe, TelefonePipe, CgcPipe, NaturezaPipe];
 
 const COMPONENTS = [DatagridFilterStringComponent];
 

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 
 import { ClienteMainComponent } from './pages';
-import { NaturezaPipe, SituacaoPipe } from './pipes';
+import { SituacaoPipe } from './pipes';
 import {
   ClienteDatagridComponent,
   ClienteDetalhesComponent,
@@ -11,7 +11,7 @@ import {
 } from './components';
 
 const PAGES = [ClienteMainComponent];
-const PIPES = [NaturezaPipe, SituacaoPipe];
+const PIPES = [SituacaoPipe];
 const COMPONENTS = [
   ClienteDatagridComponent,
   ClienteDetalhesComponent,
