@@ -11,7 +11,8 @@
     <clr-dg-column [clrDgField]="'diasEntrada'" [clrFilterValue]="'90'">
         Entrada
         <clr-dg-filter [clrDgFilter]="entradaFilter">
-            <app-pedvend-datagrid-filter-entrada #entradaFilter></app-pedvend-datagrid-filter-entrada>
+            <app-datagrid-filter-string #entradaFilter property='diasEntrada' type="number">
+            </app-datagrid-filter-string>
         </clr-dg-filter>
     </clr-dg-column>
 

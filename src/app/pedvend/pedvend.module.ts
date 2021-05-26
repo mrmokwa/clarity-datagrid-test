@@ -8,7 +8,6 @@ import {
   PedvendItensComponent,
   PedvendDatagridDetailComponent,
   PedvendDatagridFilterSituacaoComponent,
-  PedvendDatagridFilterEntradaComponent,
 } from './components';
 
 import {
@@ -25,7 +24,6 @@ const COMPONENTS = [
   PedvendItensComponent,
   PedvendDatagridDetailComponent,
   PedvendDatagridFilterSituacaoComponent,
-  PedvendDatagridFilterEntradaComponent,
 ];
 
 const PIPES = [

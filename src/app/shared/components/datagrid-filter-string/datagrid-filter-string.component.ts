@@ -29,6 +29,7 @@ export class DatagridFilterStringComponent
   implements CustomClrDgFilter, OnInit, OnDestroy
 {
   @Input() property: string;
+  @Input() type: 'text' | 'number' | 'date' = 'text';
 
   @ViewChild('input', { read: ElementRef }) input: ElementRef;
 
