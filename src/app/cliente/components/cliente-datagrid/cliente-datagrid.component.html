@@ -15,7 +15,12 @@
     <clr-dg-column>
         <ng-container *clrDgHideableColumn="{hidden: true}">Natureza</ng-container>
     </clr-dg-column>
-    <clr-dg-column [clrDgField]="'cgc'">Documento</clr-dg-column>
+    <clr-dg-column [clrDgField]="'cgc'">
+        Documento
+        <clr-dg-filter [clrDgFilter]="documento" (clrDgFilterOpenChange)="focus($event, documento)">
+            <app-cliente-datagrid-filter-documento #documento></app-cliente-datagrid-filter-documento>
+        </clr-dg-filter>
+    </clr-dg-column>
     <clr-dg-column>
         <ng-container *clrDgHideableColumn="{hidden: true}">Email</ng-container>
     </clr-dg-column>
