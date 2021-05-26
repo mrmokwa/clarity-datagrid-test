@@ -54,4 +54,9 @@ export class DatagridFilterComponent
   accepts = (novo: Retorno) => novo.value !== this.search;
 
   focus = () => setTimeout(() => this.input.nativeElement.focus(), 0);
+
+  clear() {
+    this.search = '';
+    this.changes.next();
+  }
 }

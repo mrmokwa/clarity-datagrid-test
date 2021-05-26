@@ -1,3 +1,7 @@
 <clr-input-container>
     <input #input clrInput [(ngModel)]="search" (input)="debouncer.next()" [type]="type" />
 </clr-input-container>
+
+<br />
+
+<button (click)="clear()">Limpar filtro</button>
