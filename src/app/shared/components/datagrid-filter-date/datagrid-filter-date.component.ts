@@ -10,15 +10,7 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
-import { CustomClrDgFilter, Retorno } from '..';
-
-export enum SelecaoDias {
-  Hoje = '0',
-  Semana = '7',
-  Mes = '30',
-  Ano = '365',
-  Todos = 'TODOS',
-}
+import { CustomClrDgFilter, Retorno, SelecaoDias } from '..';
 
 @Component({
   selector: 'app-datagrid-filter-date',
