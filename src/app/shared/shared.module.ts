@@ -3,12 +3,22 @@ import { CommonModule } from '@angular/common';
 import { ClarityModule } from '@clr/angular';
 import { FormsModule } from '@angular/forms';
 
-import { CepPipe, CgcPipe, NaturezaPipe, TelefonePipe } from './pipes';
-import { DatagridFilterComponent } from './components';
+import {
+  CepPipe,
+  CgcPipe,
+  NaturezaPipe,
+  TelefonePipe,
+  SelecaoDiasPipe,
+} from './pipes';
 
-const PIPES = [CepPipe, TelefonePipe, CgcPipe, NaturezaPipe];
+import {
+  DatagridFilterComponent,
+  DatagridFilterDateComponent,
+} from './components';
 
-const COMPONENTS = [DatagridFilterComponent];
+const PIPES = [CepPipe, TelefonePipe, CgcPipe, NaturezaPipe, SelecaoDiasPipe];
+
+const COMPONENTS = [DatagridFilterComponent, DatagridFilterDateComponent];
 
 @NgModule({
   imports: [ClarityModule, FormsModule],

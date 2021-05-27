@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ClrDatagridStateInterface } from '@clr/angular';
+import { SelecaoDias } from 'src/app/shared/components';
 import { Pedido, PedidoDetalhado, PedidoFiltro } from '../../pedvend.model';
 import { PedVendService } from '../../services';
 
@@ -12,6 +13,7 @@ export class PedvendDatagridComponent {
   pedidos: Pedido[];
   total: number;
   loading = true;
+  diasEntrada: SelecaoDias = SelecaoDias.Mes;
 
   constructor(private service: PedVendService) {}
 

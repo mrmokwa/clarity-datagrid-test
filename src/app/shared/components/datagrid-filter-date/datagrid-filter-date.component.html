@@ -1,0 +1,28 @@
+<clr-radio-container (change)="debouncer.next(true)">
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="0" [(ngModel)]="dias" />
+        <label>Hoje</label>
+    </clr-radio-wrapper>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="7" [(ngModel)]="dias" />
+        <label>Essa Semana</label>
+    </clr-radio-wrapper>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="30" [(ngModel)]="dias" />
+        <label>Esse Mês</label>
+    </clr-radio-wrapper>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="365" [(ngModel)]="dias" />
+        <label>Esse Ano</label>
+    </clr-radio-wrapper>
+
+    <clr-radio-wrapper>
+        <input type="radio" clrRadio value="TODOS" [(ngModel)]="dias" />
+        <label>Todos</label>
+    </clr-radio-wrapper>
+
+</clr-radio-container>

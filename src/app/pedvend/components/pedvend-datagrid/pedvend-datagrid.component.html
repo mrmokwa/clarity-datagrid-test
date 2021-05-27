@@ -9,10 +9,10 @@
     </clr-dg-column>
 
     <clr-dg-column [clrDgField]="'diasEntrada'" [clrFilterValue]="'90'">
-        Entrada
+        Entrada ({{ diasEntrada | selecaoDias }})
         <clr-dg-filter [clrDgFilter]="entradaFilter">
-            <app-datagrid-filter #entradaFilter property='diasEntrada' type="number">
-            </app-datagrid-filter>
+            <app-datagrid-filter-date #entradaFilter property='diasEntrada' [(dias)]="diasEntrada">
+            </app-datagrid-filter-date>
         </clr-dg-filter>
     </clr-dg-column>
 
