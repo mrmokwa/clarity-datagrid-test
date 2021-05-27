@@ -15,8 +15,6 @@ enum SituacaoFilter {
   Todos = 'TODOS',
 }
 
-type Retorno = { property: string; value: string };
-
 @Component({
   selector: 'app-cliente-datagrid-filter-situacao',
   templateUrl: './cliente-datagrid-filter-situacao.component.html',
@@ -34,7 +32,7 @@ export class ClienteDatagridFilterSituacaoComponent
   destroy = new Subject();
   selected = SituacaoFilter.Todos;
 
-  get state(): Retorno {
+  get state(): DatagridFilter {
     return { property: 'situacao', value: this.selected };
   }
 
@@ -59,7 +57,7 @@ export class ClienteDatagridFilterSituacaoComponent
 
   isActive = () => this.selected !== SituacaoFilter.Todos;
 
-  accepts = (novo: Retorno) => novo.value !== this.selected;
+  accepts = (novo: DatagridFilter) => novo.value !== this.selected;
 
   focus = () => setTimeout(() => this.selectedElement.nativeElement.focus(), 0);
 }

@@ -20,3 +20,8 @@ interface Retorno<T, F> {
   data: T[];
   filtros: F;
 }
+
+interface DatagridFilter {
+  property: string;
+  value: string;
+}

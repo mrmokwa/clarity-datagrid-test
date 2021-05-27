@@ -6,9 +6,14 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { ClrDatagridFilterInterface } from '@clr/angular';
 import { Subject } from 'rxjs';
 import { takeUntil, debounceTime } from 'rxjs/operators';
-import { CustomClrDgFilter, Retorno } from './datagrid-filter.model';
+
+export interface CustomClrDgFilter
+  extends Omit<ClrDatagridFilterInterface<DatagridFilter>, 'equals'> {
+  focus: () => void;
+}
 
 @Component({
   selector: 'app-datagrid-filter',
@@ -32,7 +37,7 @@ export class DatagridFilterComponent
   debouncer = new Subject();
   unsubscribe = new Subject();
 
-  get state(): Retorno {
+  get state(): DatagridFilter {
     return { property: this.property, value: this.search };
   }
 
@@ -51,7 +56,7 @@ export class DatagridFilterComponent
 
   isActive = () => this.search !== '';
 
-  accepts = (novo: Retorno) => novo.value !== this.search;
+  accepts = (novo: DatagridFilter) => novo.value !== this.search;
 
   focus = () => setTimeout(() => this.input.nativeElement.focus(), 0);
 

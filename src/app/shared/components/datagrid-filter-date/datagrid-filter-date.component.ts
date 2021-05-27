@@ -8,9 +8,15 @@ import {
   ViewChild,
   EventEmitter,
 } from '@angular/core';
+import { ClrDatagridFilterInterface } from '@clr/angular';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
-import { CustomClrDgFilter, Retorno, SelecaoDias } from '..';
+import { SelecaoDias } from '../../shared.models';
+
+interface CustomClrDgFilterDate
+  extends Omit<ClrDatagridFilterInterface<DatagridFilter>, 'equals'> {
+  focus: () => void;
+}
 
 @Component({
   selector: 'app-datagrid-filter-date',
@@ -18,7 +24,7 @@ import { CustomClrDgFilter, Retorno, SelecaoDias } from '..';
   styleUrls: ['./datagrid-filter-date.component.css'],
 })
 export class DatagridFilterDateComponent
-  implements CustomClrDgFilter, OnInit, OnDestroy
+  implements CustomClrDgFilterDate, OnInit, OnDestroy
 {
   @Input() dias = SelecaoDias.Todos;
   @Input() property: string;
@@ -35,7 +41,7 @@ export class DatagridFilterDateComponent
   debouncer = new Subject();
   destroy = new Subject();
 
-  get state(): Retorno {
+  get state(): DatagridFilter {
     return { property: this.property, value: this.dias };
   }
 
@@ -72,5 +78,5 @@ export class DatagridFilterDateComponent
 
   isActive = () => this.dias !== SelecaoDias.Todos;
 
-  accepts = (item: Retorno) => item.value != this.dias;
+  accepts = (item: DatagridFilter) => item.value != this.dias;
 }

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ClrDatagridStateInterface } from '@clr/angular';
 import { Subject } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { CustomClrDgFilter, SelecaoDias } from 'src/app/shared/components';
+import { CustomClrDgFilter } from 'src/app/shared/components';
+import { SelecaoDias } from 'src/app/shared/shared.models';
 import { Pedido, PedidoDetalhado, PedidoFiltro } from '../../pedvend.model';
 import { PedVendService } from '../../services';
 
