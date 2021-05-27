@@ -23,7 +23,11 @@ export class DatagridFilterDateComponent
   @Input() dias = SelecaoDias.Todos;
   @Input() property: string;
 
-  @ViewChild('input', { read: ElementRef }) input: ElementRef;
+  @ViewChild('hoje', { read: ElementRef }) hoje: ElementRef;
+  @ViewChild('semana', { read: ElementRef }) semana: ElementRef;
+  @ViewChild('mes', { read: ElementRef }) mes: ElementRef;
+  @ViewChild('ano', { read: ElementRef }) ano: ElementRef;
+  @ViewChild('todos', { read: ElementRef }) todos: ElementRef;
 
   @Output() diasChange = new EventEmitter<SelecaoDias>();
 
@@ -50,9 +54,23 @@ export class DatagridFilterDateComponent
     this.destroy.complete();
   }
 
-  focus = () => setTimeout(() => this.input.nativeElement.focus(), 0);
+  focus = () =>
+    setTimeout(() => {
+      const element =
+        this.dias === SelecaoDias.Hoje
+          ? this.hoje
+          : this.dias === SelecaoDias.Semana
+          ? this.semana
+          : this.dias === SelecaoDias.Mes
+          ? this.mes
+          : this.dias === SelecaoDias.Ano
+          ? this.ano
+          : this.todos;
 
-  isActive = () => this.dias !== 'TODOS';
+      element.nativeElement.focus();
+    }, 0);
+
+  isActive = () => this.dias !== SelecaoDias.Todos;
 
   accepts = (item: Retorno) => item.value != this.dias;
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClrDatagridStateInterface } from '@clr/angular';
 import { Subject } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { SelecaoDias } from 'src/app/shared/components';
+import { CustomClrDgFilter, SelecaoDias } from 'src/app/shared/components';
 import { Pedido, PedidoDetalhado, PedidoFiltro } from '../../pedvend.model';
 import { PedVendService } from '../../services';
 
@@ -37,4 +37,6 @@ export class PedvendDatagridComponent implements OnInit {
   }
 
   refresh = (state: State) => this.request.next(state);
+
+  focus = (op: boolean, ref: CustomClrDgFilter) => (op ? ref.focus() : null);
 }

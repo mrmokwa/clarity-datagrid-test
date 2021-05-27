@@ -10,7 +10,7 @@
 
     <clr-dg-column [clrDgField]="'diasEntrada'" [clrFilterValue]="'90'">
         Entrada ({{ diasEntrada | selecaoDias }})
-        <clr-dg-filter [clrDgFilter]="entradaFilter">
+        <clr-dg-filter [clrDgFilter]="entradaFilter" (clrDgFilterOpenChange)="focus($event, entradaFilter)">
             <app-datagrid-filter-date #entradaFilter property='diasEntrada' [(dias)]="diasEntrada">
             </app-datagrid-filter-date>
         </clr-dg-filter>
