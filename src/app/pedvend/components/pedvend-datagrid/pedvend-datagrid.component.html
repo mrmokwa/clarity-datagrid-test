@@ -2,6 +2,9 @@
 
     <clr-dg-column [clrDgField]="'pedido'">
         Pedido
+        <clr-dg-filter [clrDgFilter]="pedido" (clrDgFilterOpenChange)="focus($event, pedido)">
+            <app-datagrid-filter property="pedido" #pedido></app-datagrid-filter>
+        </clr-dg-filter>
     </clr-dg-column>
 
     <clr-dg-column>
@@ -9,7 +12,7 @@
     </clr-dg-column>
 
     <clr-dg-column [clrDgField]="'diasEntrada'" [clrFilterValue]="'90'">
-        Entrada ({{ diasEntrada | selecaoDias }})
+        Entrada
         <clr-dg-filter [clrDgFilter]="entradaFilter" (clrDgFilterOpenChange)="focus($event, entradaFilter)">
             <app-datagrid-filter-date #entradaFilter property='diasEntrada' [(dias)]="diasEntrada">
             </app-datagrid-filter-date>
@@ -22,13 +25,16 @@
 
     <clr-dg-column [clrDgField]="'clienteNome'">
         Cliente
-        <clr-dg-filter>
-            <app-datagrid-filter property="clienteNome"></app-datagrid-filter>
+        <clr-dg-filter [clrDgFilter]="clienteNome" (clrDgFilterOpenChange)="focus($event, clienteNome)">
+            <app-datagrid-filter #clienteNome property="clienteNome"></app-datagrid-filter>
         </clr-dg-filter>
     </clr-dg-column>
 
     <clr-dg-column [clrDgField]="'clientePedido'">
         <ng-container *clrDgHideableColumn="{hidden: true}">Pedido Cliente</ng-container>
+        <clr-dg-filter [clrDgFilter]="clientePedido" (clrDgFilterOpenChange)="focus($event, clientePedido)">
+            <app-datagrid-filter property="clientePedido" #clientePedido></app-datagrid-filter>
+        </clr-dg-filter>
     </clr-dg-column>
 
     <clr-dg-column>
@@ -45,7 +51,7 @@
 
     <clr-dg-column>
         Situação
-        <clr-dg-filter [clrDgFilter]="situacaoFilter">
+        <clr-dg-filter [clrDgFilter]="situacaoFilter" (clrDgFilterOpenChange)="focus($event, situacaoFilter)">
             <app-pedvend-datagrid-filter-situacao #situacaoFilter></app-pedvend-datagrid-filter-situacao>
         </clr-dg-filter>
     </clr-dg-column>

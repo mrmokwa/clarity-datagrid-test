@@ -17,7 +17,7 @@ export class PedvendDatagridComponent implements OnInit {
   pedidos: Pedido[];
   total: number;
   loading = true;
-  diasEntrada: SelecaoDias = SelecaoDias.Mes;
+  diasEntrada: SelecaoDias = SelecaoDias.Todos;
   request = new Subject<State>();
 
   constructor(private service: PedVendService) {}

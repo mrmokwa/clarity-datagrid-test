@@ -1,5 +1,7 @@
-import { Component, EventEmitter } from '@angular/core';
-import { ClrDatagridFilter, ClrDatagridFilterInterface } from '@clr/angular';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ClrDatagridFilter } from '@clr/angular';
+import { Subject } from 'rxjs';
+import { CustomClrDgFilter } from 'src/app/shared/components';
 import { Situacao } from '../../pedvend.model';
 
 export type SituacaoOpcoes = Situacao | 'TODOS';
@@ -15,9 +17,15 @@ type SituacaoFilter = {
   styleUrls: ['./pedvend-datagrid-filter-situacao.component.css'],
 })
 export class PedvendDatagridFilterSituacaoComponent
-  implements ClrDatagridFilterInterface<SituacaoFilter>
+  implements CustomClrDgFilter
 {
-  changes = new EventEmitter<boolean>(false);
+  @ViewChild('atendido', { read: ElementRef }) atendido: ElementRef;
+  @ViewChild('cancelado', { read: ElementRef }) cancelado: ElementRef;
+  @ViewChild('pendente', { read: ElementRef }) pendente: ElementRef;
+  @ViewChild('transferido', { read: ElementRef }) transferido: ElementRef;
+  @ViewChild('todos', { read: ElementRef }) todos: ElementRef;
+
+  changes = new Subject();
 
   selected: SituacaoOpcoes = 'TODOS';
 
@@ -28,6 +36,22 @@ export class PedvendDatagridFilterSituacaoComponent
   constructor(filterContainer: ClrDatagridFilter) {
     filterContainer.setFilter(this);
   }
+
+  focus = () =>
+    setTimeout(() => {
+      const element =
+        this.selected === Situacao.Atendido
+          ? this.atendido
+          : this.selected === Situacao.Cancelado
+          ? this.cancelado
+          : this.selected === Situacao.Pendente
+          ? this.pendente
+          : this.selected === Situacao.Transferido
+          ? this.transferido
+          : this.todos;
+
+      element.nativeElement.focus();
+    }, 0);
 
   isActive = () => this.selected !== 'TODOS';
 
