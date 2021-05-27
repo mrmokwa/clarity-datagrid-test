@@ -6,13 +6,13 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 import { CustomClrDgFilter } from 'src/app/shared/components';
 
 enum SituacaoFilter {
   Ativos = 'A',
   Inativos = 'I',
-  Todos = '',
+  Todos = 'TODOS',
 }
 
 type Retorno = { property: string; value: string };
@@ -31,6 +31,7 @@ export class ClienteDatagridFilterSituacaoComponent
 
   changes = new Subject();
   debouncer = new Subject();
+  destroy = new Subject();
   selected = SituacaoFilter.Todos;
 
   get state(): Retorno {
@@ -46,11 +47,14 @@ export class ClienteDatagridFilterSituacaoComponent
   }
 
   ngOnInit() {
-    this.debouncer.pipe(debounceTime(500)).subscribe(() => this.changes.next());
+    this.debouncer
+      .pipe(takeUntil(this.destroy), debounceTime(500))
+      .subscribe(() => this.changes.next());
   }
 
   ngOnDestroy() {
-    this.debouncer.unsubscribe();
+    this.destroy.next();
+    this.destroy.complete();
   }
 
   isActive = () => this.selected !== SituacaoFilter.Todos;
