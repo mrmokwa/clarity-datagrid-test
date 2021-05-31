@@ -8,21 +8,14 @@ import {
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { CustomClrDgFilter } from 'src/app/shared/components';
-
-enum SituacaoFilter {
-  Ativos = 'A',
-  Inativos = 'I',
-  Todos = 'TODOS',
-}
+import { Situacao } from '../../cliente.model';
 
 @Component({
   selector: 'app-cliente-datagrid-filter-situacao',
   templateUrl: './cliente-datagrid-filter-situacao.component.html',
   styleUrls: ['./cliente-datagrid-filter-situacao.component.css'],
 })
-export class ClienteDatagridFilterSituacaoComponent
-  implements CustomClrDgFilter, OnInit, OnDestroy
-{
+export class ClienteDatagridFilterSituacaoComponent implements CustomClrDgFilter, OnInit, OnDestroy {
   @ViewChild('ativos', { read: ElementRef }) ativos: ElementRef;
   @ViewChild('inativos', { read: ElementRef }) inativos: ElementRef;
   @ViewChild('todos', { read: ElementRef }) todos: ElementRef;
@@ -30,18 +23,18 @@ export class ClienteDatagridFilterSituacaoComponent
   changes = new Subject();
   debouncer = new Subject();
   destroy = new Subject();
-  selected = SituacaoFilter.Todos;
+  selected: Situacao | 'TODOS' = 'TODOS';
 
   get state(): DatagridFilter {
     return { property: 'situacao', value: this.selected };
   }
 
   get selectedElement(): ElementRef<any> {
-    return this.selected === SituacaoFilter.Ativos
+    return this.selected === Situacao.Ativo
       ? this.ativos
-      : this.selected === SituacaoFilter.Inativos
-      ? this.inativos
-      : this.todos;
+      : this.selected === Situacao.Inativo
+        ? this.inativos
+        : this.todos;
   }
 
   ngOnInit() {
@@ -55,7 +48,7 @@ export class ClienteDatagridFilterSituacaoComponent
     this.destroy.complete();
   }
 
-  isActive = () => this.selected !== SituacaoFilter.Todos;
+  isActive = () => this.selected !== 'TODOS';
 
   accepts = (novo: DatagridFilter) => novo.value !== this.selected;
 
