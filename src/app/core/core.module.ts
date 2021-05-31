@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpInterceptorComponent } from './interceptors/http-interceptor/http-interceptor.component';
+import { ApiInterceptor } from './interceptors/api.interceptor';
 
 const CUSTOM_INTERCEPTORS = [
   {
     provide: HTTP_INTERCEPTORS,
-    useClass: HttpInterceptorComponent,
+    useClass: ApiInterceptor,
     multi: true,
   },
 ];
@@ -16,4 +16,4 @@ const CUSTOM_INTERCEPTORS = [
   imports: [CommonModule],
   providers: [CUSTOM_INTERCEPTORS],
 })
-export class CoreModule {}
+export class CoreModule { }
